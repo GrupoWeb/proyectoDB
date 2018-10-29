@@ -1,0 +1,55 @@
+/*custom.css*/
+
+.body{
+    background-image: url("../img/logo2.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30%;
+}
+
+.menu{
+    cursor: pointer;
+}
+
+.navbar{
+    height: 70px !important;
+} 
+
+.user{
+    width: 320px;
+    height: 450px;
+    background-color: #e6e6e6;
+    -webkit-box-shadow: 10px 10px 11px -4px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 10px 10px 11px -4px rgba(0, 0, 0, 0.6);
+    box-shadow: 10px 10px 11px -4px rgba(0, 0, 0, 0.6);
+
+}
+
+.img{
+    width: 100%;
+    height: 80%;
+    margin-top: 28.5%;
+}
+
+.form-group{
+    padding-top: 10% !important;
+}
+
+.control-label{
+    padding-right: 10% !important;
+}
+
+.controles{
+    padding-top: 8%;
+    text-align: right;
+}
+
+.otro{
+    padding-top: 6% !important;
+    padding-right: 0% !important;
+}
+
+.input{
+    margin-top: 5%;
+}
