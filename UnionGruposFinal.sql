@@ -1165,15 +1165,17 @@ ALTER TABLE tipo_documentos_pago
 
 -- PAQUETE ROLES
 
-CREATE OR REPLACE PACKAGE paquete_rol AS
-    PROCEDURE agregar_rol(Cnombre varchar2, Cdescripcion varchar2, Cusuario varchar2, Cactivo integer);
-END paquete_rol;
-
-
 CREATE OR REPLACE PACKAGE BODY paquete_rol AS
     PROCEDURE agregar_rol(Cnombre varchar2, Cdescripcion varchar2, Cusuario varchar2, Cactivo integer) IS
     BEGIN
         INSERT INTO ROL(id_rol_usuario,nombre,descripcion_rol,fecha_creacion,usuario_creacion,status) 
             VALUES((SELECT max(id_rol_usuario)+1  FROM ROL),Cnombre,Cdescripcion,SYSDATE,Cusuario,Cactivo);
     END agregar_rol;
+    PROCEDURE add_tel_comp(Dcompania varchar2) IS
+        BEGIN
+            INSERT INTO compania_telefono(id_compania, compania) VALUES((SELECT NVL(max(id_compania)+1,1) FROM compania_telefono),Dcompania);
+        END add_tel_com;
 END paquete_rol;
+
+
+SELECT nvl(max(id_compania)+1,1) FROM compania_telefono

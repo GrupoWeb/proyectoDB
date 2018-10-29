@@ -36,80 +36,80 @@
                     <li class="active">
                         <a href="#"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
-                    <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
+                    <h3 class="menu-title">DIETA</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" 
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Components</a>
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cutlery"></i>Alimento</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-puzzle-piece"></i><a href="#">Buttons</a></li>
-                            <li><i class="fa fa-id-badge"></i><a href="#">Badges</a></li>
-                            <li><i class="fa fa-bars"></i><a href="#">Tabs</a></li>
-                            <li><i class="fa fa-share-square-o"></i><a href="#">Social Buttons</a></li>
-                            <li><i class="fa fa-id-card-o"></i><a href="#">Cards</a></li>
-                            <li><i class="fa fa-exclamation-triangle"></i><a href="#">Alerts</a></li>
-                            <li><i class="fa fa-spinner"></i><a href="#">Progress Bars</a></li>
-                            <li><i class="fa fa-fire"></i><a href="#">Modals</a></li>
-                            <li><i class="fa fa-book"></i><a href="#">Switches</a></li>
-                            <li><i class="fa fa-th"></i><a href="#">Grids</a></li>
-                            <li><i class="fa fa-file-word-o"></i><a href="#">Typography</a></li>
+                            <li><i class="fa fa-file"></i><a href="#">Nuevo</a></li>
+                            <li><i class="fa fa-search"></i><a href="#">Buscar</a></li>
+                            <li><i class="fa fa-pencil"></i><a href="#">Editar</a></li>
+                            <li><i class="fa fa-trash"></i><a href="#">Eliminar</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-                            aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
+                            aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bolt"></i>Tiempo de Comida</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="#">Basic Table</a></li>
-                            <li><i class="fa fa-table"></i><a href="#">Data Table</a></li>
+                            <li><i class="fa fa-file"></i><a href="#">Nuevo</a></li>
+                            <li><i class="fa fa-search"></i><a href="#">Buscar</a></li>
+                            <li><i class="fa fa-pencil"></i><a href="#">Editar</a></li>
+                            <li><i class="fa fa-trash"></i><a href="#">Eliminar</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-                            aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
+                            aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-heartbeat"></i>Dieta</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-th"></i><a href="#">Basic Form</a></li>
-                            <li><i class="menu-icon fa fa-th"></i><a href="#">Advanced Form</a></li>
+                            <li><i class="fa fa-file"></i><a href="#">Nueva Dieta</a></li>
+                            <li><i class="fa fa-search"></i><a href="#">Buscar Dieta</a></li>
+                            <li><i class="fa fa-pencil"></i><a href="#">Editar Dieta</a></li>
+                            <li><i class="fa fa-trash"></i><a href="#">Eliminar Dieta</a></li>
                         </ul>
                     </li>
 
-                    <h3 class="menu-title">Icons</h3><!-- /.menu-title -->
+                    <h3 class="menu-title">Odontología</h3><!-- /.menu-title -->
 
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-                            aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Icons</a>
+                            aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-stethoscope"></i>Odontología</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-fort-awesome"></i><a href="#">Font Awesome</a></li>
-                            <li><i class="menu-icon ti-themify-logo"></i><a href="#">Themefy Icons</a></li>
+                            <li><i class="fa fa-file"></i><a href="#">Nuevo Registro</a></li>
+                            <li><i class="fa fa-search"></i><a href="#">Buscar Registro</a></li>
+                            <li><i class="fa fa-pencil"></i><a href="#">Editar Registro</a></li>
+                            <li><i class="fa fa-trash"></i><a href="#">Eliminar Registro</a></li>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-                            aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Charts</a>
+                            aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-wheelchair"></i>Paciente</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-line-chart"></i><a href="#">Chart JS</a></li>
-                            <li><i class="menu-icon fa fa-area-chart"></i><a href="#">Flot Chart</a></li>
-                            <li><i class="menu-icon fa fa-pie-chart"></i><a href="#">Peity Chart</a></li>
+                            <li><i class="fa fa-file"></i><a href="#">Nuevo</a></li>
+                            <li><i class="fa fa-search"></i><a href="#">Buscar</a></li>
+                            <li><i class="fa fa-pencil"></i><a href="#">Editar</a></li>
+                            <li><i class="fa fa-trash"></i><a href="#">Eliminar</a></li>
                         </ul>
                     </li>
 
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-                            aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>
+                            aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-medkit"></i>Diagnostico</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-map-o"></i><a href="#">Google Maps</a></li>
-                            <li><i class="menu-icon fa fa-street-view"></i><a href="#">Vector Maps</a></li>
+                            <li><i class="fa fa-file"></i><a href="#">Nuevo</a></li>
+                            <li><i class="fa fa-search"></i><a href="#">Buscar</a></li>
+                            <li><i class="fa fa-pencil"></i><a href="#">Editar</a></li>
+                            <li><i class="fa fa-trash"></i><a href="#">Eliminar</a></li>
                         </ul>
                     </li>
-                    <h3 class="menu-title">Extras</h3><!-- /.menu-title -->
+                    <h3 class="menu-title">Reporte</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-                            aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
+                            aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-print"></i>Reportes</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="#">Login</a></li>
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="#">Register</a></li>
-                            <li><i class="menu-icon fa fa-paper-plane"></i><a href="#">Forget Pass</a></li>
+                            <li><i class="fa fa-print"></i><a href="#">Reporte de Dietas</a></li>
+                            <li><i class="fa fa-print"></i><a href="#">Reporte de Clinica</a></li>
+                            <li><i class="fa fa-print"></i><a href="#">Reporte de Pacientes</a></li>
+                            <li><i class="fa fa-print"></i><a href="#">Reporte de Diagnosticos</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -271,20 +271,6 @@
                 <!--/social-box-->
             </div><!--/.col-->
 
-
-            <div class="col-xl-6">
-                <div class="card" >
-                    <div class="card-header">
-                        <h4>World</h4>
-                    </div>
-                    <div class="Vector-map-js">
-                        <div id="vmap" class="vmap" style="height: 265px;"></div>
-                    </div>
-                </div>
-                <!-- /# card -->
-            </div>
-
-
         </div> <!-- .content -->
     </div><!-- /#right-panel -->
 
@@ -303,24 +289,5 @@
     <script src="assets/js/lib/vector-map/jquery.vmap.min.js"></script>
     <script src="assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
     <script src="assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
-    <script>
-        ( function ( $ ) {
-            "use strict";
-
-            jQuery( '#vmap' ).vectorMap( {
-                map: 'world_en',
-                backgroundColor: null,
-                color: '#ffffff',
-                hoverOpacity: 0.7,
-                selectedColor: '#1de9b6',
-                enableZoom: true,
-                showTooltip: true,
-                values: sample_data,
-                scaleColors: [ '#1de9b6', '#03a9f5' ],
-                normalizeFunction: 'polynomial'
-            } );
-        } )( jQuery );
-    </script>
-
 </body>
 </html>
