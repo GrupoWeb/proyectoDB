@@ -553,11 +553,10 @@ ALTER TABLE rol_persona ADD CONSTRAINT rol_pk PRIMARY KEY ( id_rol );
 CREATE TABLE rol_usuario (
     id_usuario          INTEGER NOT NULL,
     id_rol_usuario      INTEGER NOT NULL,
-    id_rol_aplicacion   INTEGER NOT NULL,
-    id_persona          INTEGER NOT NULL
+    id_rol_aplicacion   INTEGER NOT NULL
 );
 
-ALTER TABLE rol_usuario ADD CONSTRAINT rol_usuario_new_pk PRIMARY KEY ( id_rol_usuario,id_usuario );
+ALTER TABLE rol_usuario ADD CONSTRAINT rol_usuario_new_pk PRIMARY KEY ( id_rol_usuario,id_usuario,id_rol_aplicacion);
 
 CREATE TABLE sede (
     id_sede        INTEGER NOT NULL,
@@ -888,9 +887,9 @@ ALTER TABLE clinicas
         REFERENCES sede ( id_sede );
 
 
-ALTER TABLE compania_telefono
-    ADD CONSTRAINT compania_telefono_telefono_fk FOREIGN KEY ( id_compania )
-        REFERENCES telefono ( id_telefono );
+ALTER TABLE telefono
+    ADD CONSTRAINT telefono_compania_fk FOREIGN KEY ( id_compania )
+        REFERENCES compania_telefono ( id_compania );
 
 ALTER TABLE cuenta_proveedores
     ADD CONSTRAINT cuenta_proveedores_bancos_fk FOREIGN KEY ( id_banco_cuenta )
@@ -1114,10 +1113,6 @@ ALTER TABLE rol_aplicacion
         REFERENCES menu ( id_menu );
 
 ALTER TABLE rol_usuario
-    ADD CONSTRAINT rol_usuario_persona_fk FOREIGN KEY ( id_persona )
-        REFERENCES persona ( id_persona );
-
-ALTER TABLE rol_usuario
     ADD CONSTRAINT rol_usuario_rol_fk FOREIGN KEY ( id_rol_usuario )
         REFERENCES rol ( id_rol_usuario );
 
@@ -1141,17 +1136,17 @@ ALTER TABLE telefono_persona
     ADD CONSTRAINT telefono_persona_persona_fk FOREIGN KEY ( id_persona )
         REFERENCES persona ( id_persona );
 
-ALTER TABLE telefono
+ALTER TABLE telefono_persona
     ADD CONSTRAINT telefono_telefono_persona_fk FOREIGN KEY ( id_telefono )
-        REFERENCES telefono_persona ( id_telefono );
+        REFERENCES telefono ( id_telefono );
 
 ALTER TABLE telefono_proveedores
     ADD CONSTRAINT telprov_tel FOREIGN KEY ( id_telefono )
         REFERENCES telefono ( id_telefono );
 
-ALTER TABLE tipo_telefono
-    ADD CONSTRAINT tipo_telefono_telefono_fk FOREIGN KEY ( id_tipo_telefono )
-        REFERENCES telefono ( id_telefono );
+ALTER TABLE telefono
+    ADD CONSTRAINT telefono_tipo_fk FOREIGN KEY ( id_tipo_telefono )
+        REFERENCES tipo_telefono ( id_tipo_telefono );
 
 ALTER TABLE tipo_documento
     ADD CONSTRAINT tipodoc_docpersona FOREIGN KEY ( id_tipo_documento )
@@ -1164,18 +1159,351 @@ ALTER TABLE tipo_documentos_pago
 --CREACION DE PAQUETES POR MODULOS
 
 -- PAQUETE ROLES
+CREATE OR REPLACE PACKAGE paquete_rol AS
+        PROCEDURE agregar_rol(Cnombre varchar2, Cdescripcion varchar2, Cusuario varchar2, Cactivo integer);
+        PROCEDURE add_tel_comp(Dcompania varchar2);
+        PROCEDURE add_tipo_tel(Dtipo varchar2);
+        PROCEDURE add_telefono(Dtipo integer, Dcompania integer,Dtelefono integer);
+        PROCEDURE add_persona(Dtelefono integer,DSeguro integer, Dsangre integer, Drol integer, DNombreP varchar2, DNombreS varchar2, DapellidoP varchar2, DapellidoS varchar2, DapellidoC varchar2, Dnacimiento date, Dgenero varchar2);
+        PROCEDURE add_menu(Mnombre varchar2, Murl varchar2, Mpadre integer);
+        PROCEDURE add_rol_aplicacion(Rmenu number);
+        PROCEDURE add_rol_usuario(Urol number, Uaplicacion number);
+        PROCEDURE add_tipo_sangre(TtipoS varchar2, Tusuario varchar2);
+        PROCEDURE add_rol_persona(Drol varchar2,Destado varchar2,Dusuario varchar2);
+END paquete_rol;
 
 CREATE OR REPLACE PACKAGE BODY paquete_rol AS
     PROCEDURE agregar_rol(Cnombre varchar2, Cdescripcion varchar2, Cusuario varchar2, Cactivo integer) IS
     BEGIN
         INSERT INTO ROL(id_rol_usuario,nombre,descripcion_rol,fecha_creacion,usuario_creacion,status) 
-            VALUES((SELECT max(id_rol_usuario)+1  FROM ROL),Cnombre,Cdescripcion,SYSDATE,Cusuario,Cactivo);
+            VALUES((SELECT NVL(max(id_rol_usuario)+1,1)  FROM ROL),Cnombre,Cdescripcion,SYSDATE,Cusuario,Cactivo);
     END agregar_rol;
+    PROCEDURE add_menu(Mnombre varchar2, Murl varchar2, Mpadre integer)IS
+        BEGIN
+        
+            IF Mpadre = 0 then
+                INSERT INTO menu(id_menu,nombre,url) VALUES((SELECT NVL(MAX(ID_MENU)+1,1) FROM menu),Mnombre,Murl);
+            ELSE
+                INSERT INTO menu(id_menu,nombre,url,id_padre) VALUES((SELECT NVL(MAX(ID_MENU)+1,1) FROM menu),Mnombre,Murl,Mpadre);
+            END IF;
+            
+        END add_menu;
+    PROCEDURE add_rol_aplicacion(Rmenu number) IS
+        BEGIN
+            INSERT INTO rol_aplicacion(id_rol_aplicacion,id_menu) VALUES((SELECT NVL(MAX(id_rol_aplicacion)+1,1) FROM rol_aplicacion),Rmenu);
+        END add_rol_aplicacion;
+
+    PROCEDURE add_rol_usuario(Urol number, Uaplicacion number) IS
+        BEGIN
+            INSERT INTO rol_usuario(id_usuario,id_rol_usuario,id_rol_aplicacion) VALUES((SELECT NVL(MAX(id_usuario)+1,1) FROM rol_usuario),Urol,Uaplicacion);
+        END add_rol_usuario;
     PROCEDURE add_tel_comp(Dcompania varchar2) IS
         BEGIN
-            INSERT INTO compania_telefono(id_compania, compania) VALUES((SELECT NVL(max(id_compania)+1,1) FROM compania_telefono),Dcompania);
-        END add_tel_com;
+            INSERT INTO compania_telefono(id_compania, compania) VALUES((SELECT nvl(max(id_compania)+1,1) FROM compania_telefono),Dcompania);
+        END add_tel_comp;
+    PROCEDURE add_tipo_tel(Dtipo varchar2) IS
+        BEGIN
+            INSERT INTO tipo_telefono(id_tipo_telefono, tipo_telefono) VALUES((SELECT nvl(max(id_tipo_telefono)+1,1) FROM tipo_telefono),Dtipo);
+        END add_tipo_tel;
+    PROCEDURE add_telefono(Dtipo integer, Dcompania integer,Dtelefono integer) IS
+        BEGIN
+            INSERT INTO telefono(id_telefono,id_tipo_telefono,id_compania,telefono) VALUES((SELECT nvl(max(id_telefono)+1,1) FROM telefono),Dtipo,Dcompania,Dtelefono);
+        END add_telefono;
+    PROCEDURE add_persona(Dtelefono integer,DSeguro integer, Dsangre integer, Drol integer, DNombreP varchar2, DNombreS varchar2, DapellidoP varchar2, DapellidoS varchar2, DapellidoC varchar2, Dnacimiento date, Dgenero varchar2) IS
+        BEGIN    
+            IF DapellidoC = '0' then
+                INSERT INTO PERSONA(id_persona,id_telefono,id_seguro,id_tipo_sangre,id_rol,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,fecha_nacimiento,genero)
+                    VALUES((SELECT NVL(MAX(id_persona)+1,1) FROM persona),Dtelefono,DSeguro,Dsangre,Drol,DNombreP,DNombreS,DapellidoP,DapellidoS,Dnacimiento,Dgenero);
+            ELSE
+                INSERT INTO PERSONA(id_persona,id_telefono,id_seguro,id_tipo_sangre,id_rol,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,apellido_casada,fecha_nacimiento,genero)
+                    VALUES((SELECT NVL(MAX(id_persona)+1,1) FROM persona),Dtelefono,DSeguro,Dsangre,Drol,DNombreP,DNombreS,DapellidoP,DapellidoS,DapellidoC,Dnacimiento,Dgenero);
+            END IF;
+        END add_persona;
+
+    PROCEDURE add_tipo_sangre(TtipoS varchar2, Tusuario varchar2) IS
+        BEGIN
+            INSERT INTO tipo_sangre(id_tipo_sangre,tipo_sangre,usuario_registro) VALUES((SELECT nvl(max(id_tipo_sangre)+1,1) FROM tipo_sangre),TtipoS,Tusuario);
+        END add_tipo_sangre;
+
+    PROCEDURE add_rol_persona(Drol varchar2,Destado varchar2,Dusuario varchar2) IS
+        BEGIN   
+            INSERT INTO rol_persona(id_rol,rol,estado,usuario_registro,fecha_registro) VALUES((SELECT nvl(max(id_rol)+1,1) FROM rol_persona),Drol,Destado,Dusuario,SYSDATE);
+        END add_rol_persona;
 END paquete_rol;
 
 
-SELECT nvl(max(id_compania)+1,1) FROM compania_telefono
+CREATE OR REPLACE PACKAGE PK_Nutricion AS
+    FUNCTION MaximoAlimento RETURN NUMBER;
+    PROCEDURE add_alimento(Dalimento varchar2);
+    FUNCTION MaxComida RETURN NUMBER;
+    PROCEDURE add_tiempo_comida(tiempo varchar2);
+    FUNCTION MaxEspecialidad RETURN NUMBER;
+    FUNCTION MaxEspeMedico RETURN NUMBER;
+    PROCEDURE add_medico(Despecialidad varchar2,DidPersona number);
+    FUNCTION MaxSede RETURN NUMBER;
+    FUNCTION MaxClinica RETURN NUMBER;
+    FUNCTION MaxTseguro RETURN NUMBER;
+    FUNCTION Maxseguro RETURN NUMBER;
+    FUNCTION MaxCita RETURN NUMBER;
+    PROCEDURE add_cita(DtipoSeguro varchar2,Dseguro varchar2,DsedeDireccion number,DsedeNombre varchar2,Dclinica varchar2,idPersona number,Dcita varchar2,Dusuario varchar2,DfechaCita date,DhoraCita date);
+END PK_Nutricion;
+
+CREATE OR REPLACE PACKAGE BODY PK_Nutricion AS
+    FUNCTION MaximoAlimento RETURN NUMBER IS 
+        ValorMaximo NUMBER;
+        BEGIN
+            BEGIN
+                SELECT NVL(max(id_alimento)+1,1) 
+                    INTO ValorMaximo
+                    FROM  alimento;
+            END;
+             RETURN (ValorMaximo);
+        END MaximoAlimento;
+
+    FUNCTION MaxComida RETURN NUMBER IS 
+        mValor number;
+        BEGIN
+            BEGIN
+                SELECT nvl(max(id_tiempo_comida)+1,1) 
+                    INTO mValor
+                FROM tiempo_comida;
+            END;
+                RETURN (mValor);
+        END MaxComida;
+
+    FUNCTION MaxEspecialidad RETURN NUMBER IS 
+        mValor number;
+        BEGIN
+            BEGIN
+                SELECT nvl(max(id_especialidad)+1,1) 
+                    INTO mValor
+                FROM especialidad;
+            END;
+                RETURN (mValor);
+        END MaxEspecialidad;
+
+    FUNCTION MaxEspeMedico RETURN NUMBER IS 
+        mValor number;
+        BEGIN
+            BEGIN
+                SELECT nvl(max(id_medico)+1,1) 
+                    INTO mValor
+                FROM medico;
+            END;
+                RETURN (mValor);
+        END MaxEspeMedico;
+
+    FUNCTION MaxSede RETURN NUMBER IS 
+        mValor number;
+        BEGIN
+            BEGIN
+                SELECT nvl(max(id_sede)+1,1) 
+                    INTO mValor
+                FROM sede;
+            END;
+                RETURN (mValor);
+        END MaxSede;
+
+    FUNCTION MaxClinica RETURN NUMBER IS 
+        mValor number;
+        BEGIN
+            BEGIN
+                SELECT nvl(max(id_clinica)+1,1) 
+                    INTO mValor
+                FROM clinica;
+            END;
+                RETURN (mValor);
+        END MaxClinica;
+
+    FUNCTION MaxTseguro RETURN NUMBER IS 
+        mValor number;
+        BEGIN
+            BEGIN
+                SELECT nvl(max(id_tipo_seguro)+1,1) 
+                    INTO mValor
+                FROM tipo_seguro;
+            END;
+                RETURN (mValor);
+        END MaxTseguro;
+
+    FUNCTION Maxseguro RETURN NUMBER IS 
+        mValor number;
+        BEGIN
+            BEGIN
+                SELECT nvl(max(id_seguro)+1,1) 
+                    INTO mValor
+                FROM seguro;
+            END;
+                RETURN (mValor);
+        END Maxseguro;
+
+    FUNCTION MaxCita RETURN NUMBER IS 
+        mValor number;
+        BEGIN
+            BEGIN
+                SELECT nvl(max(id_cita)+1,1) 
+                    INTO mValor
+                FROM cita;
+            END;
+                RETURN (mValor);
+        END MaxCita;
+
+
+    PROCEDURE add_alimento(Dalimento varchar2) IS
+        id number :=0;
+        BEGIN
+            id := pk_nutricion.MaximoAlimento;
+            INSERT INTO alimento(id_alimento,alimento) VALUES(id,Dalimento);
+        END add_alimento;
+    
+    PROCEDURE add_tiempo_comida(tiempo varchar2) IS
+        id number :=0;
+        BEGIN
+            id := pk_nutricion.MaxComida;
+            INSERT INTO tiempo_comida(id_tiempo_comida,tiempo) VALUES(id,tiempo);
+        END add_tiempo_comida;
+
+    PROCEDURE add_medico(Despecialidad varchar2,DidPersona number) IS
+            idEspecialidad number :=0;
+            idEspeMedico number := 0;
+        BEGIN
+                idEspecialidad := pk_nutricion.MaxEspecialidad;
+                INSERT INTO especialidad(id_especialidad,especialidad) VALUES(idEspecialidad,Despecialidad);
+
+                idEspeMedico := pk_nutricion.MaxEspeMedico;
+                INSERT INTO medico(id_persona,id_medico,id_especialidad,fecha_ingreso) VALUES(DidPersona,idEspeMedico,idEspecialidad,SYSDATE);
+
+                INSERT INTO especialidad_medico(id_medico,id_especialidad,fecha_registro) VALUES(idEspeMedico,idEspecialidad,SYSDATE);
+        END add_medico;
+
+    PROCEDURE add_cita(DtipoSeguro varchar2,Dseguro varchar2,DsedeDireccion number,
+                            DsedeNombre varchar2,Dclinica varchar2,idPersona number,Dcita varchar2,Dusuario varchar2,DfechaCita date,DhoraCita date) IS
+        --variables
+            idTseguro number:=0;
+            iddSeguro number:=0;
+            idSede number:=0;
+            idMclinica number :=0;
+            idCita number :=0;
+
+        BEGIN
+                idTseguro := pk_nutricion.MaxTseguro;
+                    INSERT INTO tipo_seguro(id_tipo_seguro,tipo_seguro) VALUES(idTseguro,DtipoSeguro);
+
+                iddSeguro := pk_nutricion.Maxseguro;
+                IF DtipoSeguro = 'SEMESTRAL' THEN
+                    INSERT INTO seguro(id_seguro,id_tipo_seguro,seguro,fecha_registro,vigencia_seguro) VALUES(iddSeguro,idTseguro,Dseguro,SYSDATE,add_months(to_date(SYSDATE),6));
+                ELSE IF DtipoSeguro = 'ANUAL' THEN  
+                    INSERT INTO seguro(id_seguro,id_tipo_seguro,seguro,fecha_registro,vigencia_seguro) VALUES(iddSeguro,idTseguro,Dseguro,SYSDATE,add_months(to_date(SYSDATE),12));
+                ELSE
+                    INSERT INTO seguro(id_seguro,id_tipo_seguro,seguro,fecha_registro,vigencia_seguro) VALUES(iddSeguro,idTseguro,Dseguro,SYSDATE,add_months(to_date(SYSDATE),24));
+                END IF
+
+                idSede := pk_nutricion.MaxSede;
+                    INSERT INTO sede(id_sede,id_direccion,nombre) VALUES(idSede,DsedeDireccion,DsedeNombre);
+
+                idMclinica := pk_nutricion.MaxClinica;  
+                    INSERT INTO clinicas(id_clinica,id_sede,descripcion) VALUES(idMclinica,idSede,Dclinica);
+
+                idCita := pk_nutricion.MaxCita;
+                    INSERT INTO cita(id_cita,id_seguro,id_persona_paciente,cita,fecha_registro,usuario_registro,fecha_cita,hora_cita,id_clinica)
+                        VALUES(idCita,iddSeguro,idPersona,Dcita,SYSDATE,Dusuario,DfechaCita,DhoraCita,idMclinica);
+        END add_cita;
+END PK_Nutricion;
+
+
+
+
+DECLARE
+    EXISTENCIA number :=0;
+
+BEGIN
+
+ 
+--COMPAÑIA
+    paquete_rol.add_tel_comp('TIGO');
+    paquete_rol.add_tel_comp('CLARO');
+    paquete_rol.add_tel_comp('MOVISTAR');
+
+--TIPO TELEFONO
+    paquete_rol.add_tipo_tel('CASA');
+    paquete_rol.add_tipo_tel('CELULAR');
+    paquete_rol.add_tipo_tel('OFICINA');
+
+--TELEFONO
+    paquete_rol.add_telefono(2,1,55648978);
+    paquete_rol.add_telefono(3,2,24319855);
+    paquete_rol.add_telefono(1,3,23689585);
+
+--ROL
+    paquete_rol.agregar_rol('ADMINISTRADOR','ADMINISTRA EL SISTEMA','jjolon',1);
+    paquete_rol.agregar_rol('USUARIO','USUARIO DE ODONTOLOGIA','jjolon',1);
+    paquete_rol.agregar_rol('COBRADOR','USUARIO COBRADOR FACTURA','jjolon',1);
+
+--menu
+
+    paquete_rol.add_menu('ODONTOLOGIA','../proyecto/view/index.php',0);
+    paquete_rol.add_menu('ODONTOLOGIA','../proyecto/view/principal',1);
+
+--rol aplicacion
+
+    paquete_rol.add_rol_aplicacion(1);
+    paquete_rol.add_rol_aplicacion(2);
+
+--rol usuario
+
+    paquete_rol.add_rol_usuario(1,1);
+    paquete_rol.add_rol_usuario(2,2);
+    paquete_rol.add_rol_usuario(3,2);
+
+-- TIPO SANGRE
+
+    paquete_rol.add_tipo_sangre('O POSITIVO','JJOLONG');
+    paquete_rol.add_tipo_sangre('O NEGATIVO','JJOLONG');
+    paquete_rol.add_tipo_sangre('A POSITIVO','JJOLONG');
+    paquete_rol.add_tipo_sangre('A NEGATIVO','JJOLONG');
+
+--persona
+
+    paquete_rol.add_persona(1,1,1,1,'JUAN','JOSE','JOLON','GRANADOS','0','22/12/1985','M');
+
+-- rol persona
+    paquete_rol.add_rol_persona('Administrador','1','JJOLONG');
+
+
+-- funcion maximo alimento
+
+    EXISTENCIA := pk_nutricion.maximo;
+    RAISE_APPLICATION_ERROR(-20500,'EXISTENCIA '||EXISTENCIA);
+
+
+--alimento
+
+    pk_nutricion.add_alimento('fruta');
+    pk_nutricion.add_alimento('banano');
+    pk_nutricion.add_alimento('lechuga');
+
+--tiempo comida
+
+    pk_nutricion.add_tiempo_comida('matutino');
+    pk_nutricion.add_tiempo_comida('vespertino');
+
+--medico
+
+    pk_nutricion.add_medico('DENTISTA',1);
+    pk_nutricion.add_medico('MEDICO GENERAL',2);
+
+--cita
+
+    pk_nutricion.add_cita('SEMESTRAL','BASICO',1,'MIXCO','CLINICA DOCTOR SIMI',1,'ODONTOLOGIA','JJOLONG',to_date('31/10/2018','DD/MM/YYYY'),to_date('10:00','HH:MI AM'));
+    pk_nutricion.add_cita('ANUAL','BASICO',1,'MIXCO','CLINICA DOCTOR SIMI',1,'ODONTOLOGIA','JJOLONG',to_date('31/10/2018','DD/MM/YYYY'),to_date('10:00','HH:MI AM'));
+END;
+
+
+select * from compania_telefono;
+select * from tipo_telefono;
+select * from telefono;
+select * from ROL;
+select * from menu;
+select * from rol_aplicacion;
+select * from rol_usuario;
+select * from tipo_sangre;
