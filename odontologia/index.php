@@ -4,214 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/css/normalize.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css"> 
-    <link rel="stylesheet" href="assets/css/flag-icon.min.css">
-    <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/vector-map/jqvmap.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-    <title>Modulo Ondontologia</title>
+    <link rel="stylesheet" href="include/css/bootstrap.css">
+    <script src="include/js/jquery.js"></script>
+    <script src="include/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="include/css/mega-menu.css">
+    <link rel="stylesheet" href="include/css/custom.css">
+
+   <script src="include/js/comandos.js"></script>
+    <script src="include/js/mega-menu.js"></script>
+    <title>Modulo Odontología</title>
 </head>
 <body>
-    
-  <!-- Left Panel -->
-
-    <aside id="left-panel" class="left-panel">
-        <nav class="navbar navbar-expand-sm navbar-default">
-
-            <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" 
-                    data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" href="./"><img src="assets/img/logo.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="assets/img/logo2.png" alt="Logo"></a>
-            </div>
-
-            <div id="main-menu" class="main-menu collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="#"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
-                    </li>
-                    <h3 class="menu-title">DIETA</h3><!-- /.menu-title -->
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" 
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cutlery"></i>Alimento</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-file"></i><a href="#">Nuevo</a></li>
-                            <li><i class="fa fa-search"></i><a href="#">Buscar</a></li>
-                            <li><i class="fa fa-pencil"></i><a href="#">Editar</a></li>
-                            <li><i class="fa fa-trash"></i><a href="#">Eliminar</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-                            aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bolt"></i>Tiempo de Comida</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-file"></i><a href="#">Nuevo</a></li>
-                            <li><i class="fa fa-search"></i><a href="#">Buscar</a></li>
-                            <li><i class="fa fa-pencil"></i><a href="#">Editar</a></li>
-                            <li><i class="fa fa-trash"></i><a href="#">Eliminar</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-                            aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-heartbeat"></i>Dieta</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-file"></i><a href="#">Nueva Dieta</a></li>
-                            <li><i class="fa fa-search"></i><a href="#">Buscar Dieta</a></li>
-                            <li><i class="fa fa-pencil"></i><a href="#">Editar Dieta</a></li>
-                            <li><i class="fa fa-trash"></i><a href="#">Eliminar Dieta</a></li>
-                        </ul>
-                    </li>
-
-                    <h3 class="menu-title">Odontología</h3><!-- /.menu-title -->
-
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-                            aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-stethoscope"></i>Odontología</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-file"></i><a href="#">Nuevo Registro</a></li>
-                            <li><i class="fa fa-search"></i><a href="#">Buscar Registro</a></li>
-                            <li><i class="fa fa-pencil"></i><a href="#">Editar Registro</a></li>
-                            <li><i class="fa fa-trash"></i><a href="#">Eliminar Registro</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-                            aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-wheelchair"></i>Paciente</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-file"></i><a href="#">Nuevo</a></li>
-                            <li><i class="fa fa-search"></i><a href="#">Buscar</a></li>
-                            <li><i class="fa fa-pencil"></i><a href="#">Editar</a></li>
-                            <li><i class="fa fa-trash"></i><a href="#">Eliminar</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-                            aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-medkit"></i>Diagnostico</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-file"></i><a href="#">Nuevo</a></li>
-                            <li><i class="fa fa-search"></i><a href="#">Buscar</a></li>
-                            <li><i class="fa fa-pencil"></i><a href="#">Editar</a></li>
-                            <li><i class="fa fa-trash"></i><a href="#">Eliminar</a></li>
-                        </ul>
-                    </li>
-                    <h3 class="menu-title">Reporte</h3><!-- /.menu-title -->
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-                            aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-print"></i>Reportes</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-print"></i><a href="#">Reporte de Dietas</a></li>
-                            <li><i class="fa fa-print"></i><a href="#">Reporte de Clinica</a></li>
-                            <li><i class="fa fa-print"></i><a href="#">Reporte de Pacientes</a></li>
-                            <li><i class="fa fa-print"></i><a href="#">Reporte de Diagnosticos</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </nav>
-    </aside><!-- /#left-panel -->
-
-     <!-- Right Panel -->
-
-    <div id="right-panel" class="right-panel">
-
-        <!-- Header-->
-        <header id="header" class="header">
-            <div class="header-menu">
-                <div class="col-sm-7">
-                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
-                </div>
-                <div class="col-sm-5">
-                    <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="assets/img/admin.jpg" alt="User Avatar">
-                        </a>
-
-                        <div class="user-menu dropdown-menu">
-                                <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
-
-                                <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
-
-                                <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
-
-                                <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
-                        </div>
-                    </div>
-
-                    <div class="language-select dropdown" id="language-select">
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
-                            <i class="flag-icon flag-icon-us"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="language" >
-                            <div class="dropdown-item">
-                                <span class="flag-icon flag-icon-fr"></span>
-                            </div>
-                            <div class="dropdown-item">
-                                <i class="flag-icon flag-icon-es"></i>
-                            </div>
-                            <div class="dropdown-item">
-                                <i class="flag-icon flag-icon-us"></i>
-                            </div>
-                            <div class="dropdown-item">
-                                <i class="flag-icon flag-icon-it"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </header><!-- /header -->
-        <!-- Header-->
-
-        <div class="breadcrumbs">
-            <div class="col-sm-4">
-                <div class="page-header float-left">
-                    <div class="page-title">
-                        <h1>Dashboard</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li class="active">Dashboard</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
+    <div class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img alt="Logo" src="https://www.solodev.com/assets/side-nav/logo.png"></a>
         </div>
+        <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="#">Inicio</a></li>
+            <li class="dropdown menu-large">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Nutrición <b class="caret"></b> </a>
+            <ul class="dropdown-menu megamenu row">
+            <li class="col-sm-3">
+                <ul>
+                    <li class="dropdown-header">ALIMENTO</li>
+                    <li class="seleccion"><a  onClick="CargarPagina('#contenido','view/Ialimento.php')">Ingresar Alimentos</a></li>
+                    <li class="seleccion"><a  onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de Alimentos</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">TIEMPO DE COMIDA</li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Ingresar Tiempos</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de Tiempo de Comida</a></li>
+                    <li class="divider"></li>
+                </ul>
+                </li>
+                <li class="col-sm-3">
+                <ul>
+                    <li class="dropdown-header">ESPECIALIDAD MÉDICO</li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Nueva Especialidad</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de Especialidades</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">MEDICO</li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Nuevo Medico</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de Medicos</a></li>
+                </ul>
+                </li>
+                <li class="col-sm-3">
+                <ul>
+                    <li class="dropdown-header">ASIGNAR MEDICO A ESPECIALIDAD</li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Asignación</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">CLÍNICA</li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Sede</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Asignar Clínica</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de Clínicas</a></li>
+                </ul>
+                </li>
+                <li class="col-sm-3">
+                <ul>
+                    <li class="dropdown-header">SEGURO</li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Nuevo Tipo de Seguro</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Asignar SEguro</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de Seguro</a></li>
+                    <li class="divider"></li>
+                </ul>
+                </li>
+                <li class="col-sm-3">
+                <ul>
+                    <li class="dropdown-header">CITA</li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Asignar Cita</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de Citas</a></li>
+                </ul>
+                </li>
+                <li class="col-sm-3">
+                <ul>
+                    <li class="dropdown-header">DIETA</li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Nueva Dieta</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de Dientas</a></li>
+                </ul>
+                </li>
+            </ul>
+            </li>
+            <li class="dropdown menu-large">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Odontología <b class="caret"></b></a>          
+            <ul class="dropdown-menu megamenu row">
+            <li class="col-sm-3">
+                <ul>
+                    <li class="dropdown-header">TIPO PACIENTE</li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Nuevo Tipo</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Asignación Tipo Paciente</a></li>
+                </ul>
+                </li>
+                <li class="col-sm-3">
+                <ul>
+                    <li class="dropdown-header">PACIENTE ODONTOLOGIA</li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Nuevo paciente</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de pacientes</a></li>
+                </ul>
+                </li>
+            </ul>
+            </li>
+        </ul>
+        </div>
+    </div>
+    </div>
+    <div class="container" id="contenido">
 
-        <div class="content mt-3">
-            
-            <div id="contenido" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                
-            </div>
-            
-        </div> <!-- .content -->
-    </div><!-- /#right-panel -->
-
-    <!-- Right Panel -->
-
-    <script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/main.js"></script>
-
-
-    <script src="assets/js/lib/chart-js/Chart.bundle.js"></script>
-    <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/widgets.js"></script>
-    <script src="assets/js/lib/vector-map/jquery.vmap.js"></script>
-    <script src="assets/js/lib/vector-map/jquery.vmap.min.js"></script>
-    <script src="assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
-    <script src="assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
+    </div>
 </body>
 </html>
