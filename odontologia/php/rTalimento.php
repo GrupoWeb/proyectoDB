@@ -4,9 +4,9 @@
     $llamar = $conn->Conectar();
     try{
         $data = array();
-        $st=$llamar->prepare("Select id_alimento,alimento from alimento");
+        $st=$llamar->prepare("SELECT ID_ALIMENTO,ALIMENTO FROM ALIMENTO");
         $st->execute(); 
-        $resultado=$st->fetchAll();
+        $resultado=$st->fetchAll(PDO::FETCH_ASSOC);
         foreach($resultado as $row) {
             $data['data'][] = $row;
         }

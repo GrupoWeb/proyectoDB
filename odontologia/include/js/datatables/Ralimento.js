@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#Ralimento').DataTable( {
+    var tabla = $('#Ralimento').DataTable( {
         "bDeferRender": true,
         "searching": true,
         "blengthChange":true,
@@ -14,11 +14,13 @@ $(document).ready(function() {
         },
         "columns": [
             { "data": "ID_ALIMENTO" },
-            { "data": "ALIMENTO" }
+            { "data": "ALIMENTO" },
+            { "defaultContent": "<button type='button' class='editar btn btn-primary' data-toggle='modal' data-target='#modalEditar'><i class='fas fa-pencil-alt'></i></button><button type='button' class='eliminar btn btn-danger' data-toggle='modal' data-target='#modalEliminar'><i class='fas fa-trash-alt'></i></button>"}
         ],
         "columnDefs": [
-            { "width": "6%", "targets": 0 },
-            { "width": "40%", "targets": 1 }
+            { "width": "6%",  "targets": 0 },
+            { "width": "60%", "targets": 1 },
+            { "width": "10%", "targets":2}
           ],
         "dom": 'Bfrtip',
         "buttons": [
@@ -34,5 +36,24 @@ $(document).ready(function() {
             }
         ]
     } );
+    obtener_data_editar("#Ralimento tbody", tabla);
+    obtener_data_eliminar("#Ralimento tbody", tabla);
    
 } );
+
+var obtener_data_editar = function (tbody, table) {
+    $(tbody).on("click","button.editar",function () {
+        var data = table.row($(this).parents("tr")).data();
+        var food = $("#food").val(data.ALIMENTO);
+        var idfood = $("#idfood").val(data.ID_ALIMENTO);
+
+    })
+}
+
+var obtener_data_eliminar = function (tbody, table) {
+    $(tbody).on("click", "button.eliminar", function () {
+        var data = table.row($(this).parents("tr")).data();
+        var food = $("#idAlimento").val(data.ID_ALIMENTO);
+
+    })
+}
