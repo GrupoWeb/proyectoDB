@@ -10,7 +10,7 @@ class Conexion {
             $base = new PDO($this->db, $this->user, $this->password);
             $base->exec('SET CARACTER SET utf8');
             if ($base) {
-                
+               
                 return $base;
             }
         }catch(Exception $e){

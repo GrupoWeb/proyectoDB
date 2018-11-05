@@ -1,3 +1,8 @@
+<?php 
+$host= $_SERVER["HTTP_HOST"];
+$url= $_SERVER["REQUEST_URI"];
+//echo "http://" . $host . $url;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +17,12 @@
 
    <script src="include/js/comandos.js"></script>
     <script src="include/js/mega-menu.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.18/af-2.3.2/b-1.5.4/b-colvis-1.5.4/b-flash-1.5.4/b-html5-1.5.4/b-print-1.5.4/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-1.5.0/sl-1.2.6/datatables.css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.18/af-2.3.2/b-1.5.4/b-colvis-1.5.4/b-flash-1.5.4/b-html5-1.5.4/b-print-1.5.4/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-1.5.0/sl-1.2.6/datatables.js"></script>
+    
     <title>Modulo Odontología</title>
 </head>
 <body>
@@ -35,7 +46,7 @@
                 <ul>
                     <li class="dropdown-header">ALIMENTO</li>
                     <li class="seleccion"><a  onClick="CargarPagina('#contenido','view/Ialimento.php')">Ingresar Alimentos</a></li>
-                    <li class="seleccion"><a  onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de Alimentos</a></li>
+                    <li class="seleccion"><a  onClick="CargarPagina('#contenido','view/Ralimento.php')">Reporte de Alimentos</a></li>
                     <li class="divider"></li>
                     <li class="dropdown-header">TIEMPO DE COMIDA</li>
                     <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Ingresar Tiempos</a></li>

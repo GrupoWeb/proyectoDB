@@ -21,6 +21,7 @@ function enviarAlimento(form){
             success: function(response){
                 if(response = 'success'){
                     alert("Dato Almacenado");
+                    window.location.href = "http://localhost/proyecto/proyectoDB/odontologia/";
                 }
             }
         })
