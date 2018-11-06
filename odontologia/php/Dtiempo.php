@@ -3,10 +3,10 @@
 
     $conn = new Conexion();
     $llamar = $conn->Conectar();
-    $idfood = $_POST['idAlimento'];
+    $idtiempo = $_POST['idtiempo'];
     try{
-        $x = $llamar->prepare("DELETE FROM ALIMENTO WHERE ID_ALIMENTO = :idfood");
-         $x->bindParam(1, $idfood, PDO::PARAM_INT);
+        $x = $llamar->prepare("DELETE FROM TIEMPO_COMIDA WHERE ID_TIEMPO_COMIDA = :idtiempo");
+         $x->bindParam(1, $idtiempo, PDO::PARAM_INT);
          $x->execute();
         if( $x ) {
             $x->closeCursor();

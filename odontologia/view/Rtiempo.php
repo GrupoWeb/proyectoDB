@@ -3,14 +3,14 @@ $host= $_SERVER["HTTP_HOST"];
 $url= $_SERVER["REQUEST_URI"];
 //echo "http://" . $host . $url;
 ?>
-<script src="include/js/datatables/Ralimento.js"></script>
+<script src="include/js/datatables/Rtiempo.js"></script>
 <script src="include/js/comandos.js"></script>
 
 <body>
 <div class="toolbar">
 </div>
     <div class="container">
-        <table class="table  table-hover table-striped table-bordered" id="Ralimento" style="width:70%">
+        <table class="table  table-hover table-striped table-bordered" id="Rtiempo" style="width:70%">
             <thead>
                 <th>Codigo</th>
                 <th>Nombre</th>
@@ -19,22 +19,22 @@ $url= $_SERVER["REQUEST_URI"];
         </table>
     </div>
     
-<form  id="Ealimento">
+<form  id="Etiempo">
 
     <div id="modalEditar" class="modal fade" role="dialog">
     <div class="modal-dialog">  
         <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Edición de Alimentos</h4>
+            <h4 class="modal-title">Edición de Tiempo de Comida</h4>
         </div>
         <div class="modal-body">
             <form class="form-horizontal" >
-            <input type="hidden" class="form-control" id="idfood" name="idfood" value="">
+            <input type="hidden" class="form-control" id="idtime" name="idtime" value="">
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="food">Alimento:</label>
+                    <label class="control-label col-sm-2" for="times">Tiempo:</label>
                     <div class="col-sm-10">
-                    <input type="text" class="form-control" id="food" name="food" placeholder="Enter New Food">
+                    <input type="text" class="form-control" id="times" name="times" placeholder="Enter New times">
                     </div>
                 </div>
             </form>
@@ -47,19 +47,19 @@ $url= $_SERVER["REQUEST_URI"];
     </div>
 </form>
 
-<form  id="Dalimento">
+<form  id="Dtiempo">
     <div id="modalEliminar" class="modal fade" role="dialog">
     <div class="modal-dialog">  
         <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Elininar Alimento</h4>
+            <h4 class="modal-title">Elininar Tiempo</h4>
         </div>
         <div class="modal-body">
             <form class="form-horizontal">
-            <input type="hidden" name="idAlimento" id="idAlimento" value="">
+            <input type="hidden" name="idtiempo" id="idtiempo" value="">
                 <div class="form-group">
-                    ¿Está seguro de eliminar el alimento?
+                    ¿Está seguro de eliminar el tiempo de comida?
                 </div>
             </form>
         </div>
@@ -73,8 +73,8 @@ $url= $_SERVER["REQUEST_URI"];
 </form>
 <script>
 $(document).ready(function(){
-    editarAlimento('#Ealimento','view/Ralimento.php','#modalEditar');
-    eliminarAlimento('#Dalimento','view/Ralimento.php','#modalEliminar');
+    editarTiempo('#Etiempo','view/Rtiempo.php','#modalEditar');
+    eliminarTiempo('#Dtiempo','view/Rtiempo.php','#modalEliminar');
 })
 
 </script>

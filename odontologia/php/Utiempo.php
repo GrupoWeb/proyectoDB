@@ -3,14 +3,16 @@
 
     $conn = new Conexion();
     $llamar = $conn->Conectar();
-    $idfood = $_POST['idAlimento'];
+    $timer = $_POST['times'];
+    $idtimer = $_POST['idtime'];
     try{
-        $x = $llamar->prepare("DELETE FROM ALIMENTO WHERE ID_ALIMENTO = :idfood");
-         $x->bindParam(1, $idfood, PDO::PARAM_INT);
+        $x = $llamar->prepare("UPDATE TIEMPO_COMIDA T  SET T.TIEMPO = :timer WHERE T.ID_TIEMPO_COMIDA = :idtimer");
+         $x->bindParam(1, $timer, PDO::PARAM_STR);
+         $x->bindParam(2, $idtimer, PDO::PARAM_INT);
          $x->execute();
         if( $x ) {
-            $x->closeCursor();
             echo "success";
+            $x->closeCursor();
         }else{
             echo "malo";
         };
@@ -23,4 +25,5 @@
         }
     }
     
+
 ?>

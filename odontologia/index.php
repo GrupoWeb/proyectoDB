@@ -10,8 +10,8 @@ $url= $_SERVER["REQUEST_URI"];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="include/css/bootstrap.css">
-    <script src="include/js/jquery.js"></script>
-    <script src="include/js/bootstrap.js"></script>
+    
+  
     <link rel="stylesheet" href="include/css/mega-menu.css">
     <link rel="stylesheet" href="include/css/custom.css">
 
@@ -23,7 +23,8 @@ $url= $_SERVER["REQUEST_URI"];
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.18/af-2.3.2/b-1.5.4/b-colvis-1.5.4/b-flash-1.5.4/b-html5-1.5.4/b-print-1.5.4/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-1.5.0/sl-1.2.6/datatables.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>Modulo Odontología</title>
 </head>
 <body>
@@ -50,28 +51,24 @@ $url= $_SERVER["REQUEST_URI"];
                     <li class="seleccion"><a  onClick="CargarPagina('#contenido','view/Ralimento.php')">Reporte de Alimentos</a></li>
                     <li class="divider"></li>
                     <li class="dropdown-header">TIEMPO DE COMIDA</li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Ingresar Tiempos</a></li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de Tiempo de Comida</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/AddTiempo.php')">Ingresar Tiempos</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/Rtiempo.php')">Reporte de Tiempo de Comida</a></li>
                     <li class="divider"></li>
                 </ul>
                 </li>
                 <li class="col-sm-3">
                 <ul>
                     <li class="dropdown-header">ESPECIALIDAD MÉDICO</li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Nueva Especialidad</a></li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de Especialidades</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/Respecialidad.php')">Reporte de Especialidades</a></li>
                     <li class="divider"></li>
                     <li class="dropdown-header">MEDICO</li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Nuevo Medico</a></li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de Medicos</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/addMedico.php')">Nuevo Medico</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/Rmedico.php')">Reporte de Medicos</a></li>
                 </ul>
                 </li>
                 <li class="col-sm-3">
                 <ul>
-                    <li class="dropdown-header">ASIGNAR MEDICO A ESPECIALIDAD</li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Asignación</a></li>
-                    <li class="divider"></li>
-                    <li class="dropdown-header">CLÍNICA</li>
+                    
                     <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Sede</a></li>
                     <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Asignar Clínica</a></li>
                     <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de Clínicas</a></li>

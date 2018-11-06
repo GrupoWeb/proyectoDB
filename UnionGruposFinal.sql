@@ -966,7 +966,7 @@ ALTER TABLE enfermedad
 
 ALTER TABLE especialidad_medico
     ADD CONSTRAINT especial_medico FOREIGN KEY ( id_medico )
-        REFERENCES medico ( id_persona );
+        REFERENCES medico ( id_medico );
 
 ALTER TABLE especialidad_medico
     ADD CONSTRAINT especialidad_especiamd FOREIGN KEY ( id_especialidad )
@@ -1643,3 +1643,14 @@ exec reset_seq( 'STELEFONO');
 exec reset_seq( 'STSANGRE');
 exec reset_seq( 'STSEGURO');
 exec reset_seq( 'STTELEFONO');
+
+
+ALTER TABLE ESPECIALIDAD_MEDICO
+DROP CONSTRAINT especial_medico;
+
+ALTER TABLE ESPECIALIDAD_MEDICO
+DISABLE CONSTRAINT especial_medico;
+
+ALTER TABLE especialidad_medico
+    ADD CONSTRAINT especial_medicoa FOREIGN KEY ( id_medico )
+        REFERENCES medico ( id_medico );

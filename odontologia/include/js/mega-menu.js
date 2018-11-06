@@ -6,4 +6,4 @@ $(document).ready(function() {
         function() { $('.dropdown-menu', this).stop().fadeOut("fast");
       });
     });
-  }
+  })

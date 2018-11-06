@@ -10,19 +10,93 @@ function enviarAlimento(form){
             data: parametros,
             url: 'php/addAlimento.php',
             type: "post",
-            beforeSend: function(){
-                $('#contenido').html("<h1>Procesando Información, espere por favor....</h1>")
-            },
             success: function(response){
                 if(response = 'success'){
-                    alert("Dato Almacenado");
-                    window.location.href = "http://localhost/proyecto/proyectoDB/odontologia/";
+
+                    swal({
+                        title: "Alimento",
+                        text: "Dato Almacenado!",
+                        icon: "warning",
+                        button: true,
+                        dangerMode: true,
+                      })
+                      .then((willDelete) => {
+                        if (willDelete) {
+                            window.location.href = "http://localhost/proyecto/proyectoDB/odontologia/";
+                        
+                        } 
+                      });
                 }
             }
         })
        
     })
 }
+
+function addTiempo(form){
+    $(form).submit(function(e){
+        e.preventDefault();
+        let parametros = $(this).serialize()
+        $.ajax({
+            data: parametros,
+            url: 'php/addTime.php',
+            type: "post",
+            success: function(response){
+                if(response = 'success'){
+                    swal({
+                        title: "Tiempo de Comida",
+                        text: "Dato Almacenado!",
+                        icon: "warning",
+                        button: true,
+                        dangerMode: true,
+                      })
+                      .then((willDelete) => {
+                        if (willDelete) {
+                            window.location.href = "http://localhost/proyecto/proyectoDB/odontologia/";
+                        
+                        } 
+                      });
+                                       
+                }
+            }
+        })
+       
+    })
+}
+
+
+function addMedico(form){
+    $(form).submit(function(e){
+        e.preventDefault();
+        let parametros = $(this).serialize()
+        $.ajax({
+            data: parametros,
+            url: 'php/addmedico.php',
+            type: "post",
+            success: function(response){
+                if(response = 'success'){
+                    swal({
+                        title: "Médico Asignado y Guardado",
+                        text: "Dato Almacenado!",
+                        icon: "warning",
+                        button: true,
+                        dangerMode: true,
+                      })
+                      .then((willDelete) => {
+                        if (willDelete) {
+                            window.location.href = "http://localhost/proyecto/proyectoDB/odontologia/";
+                        
+                        } 
+                      });
+                                       
+                }
+            }
+        })
+       
+    })
+}
+
+
 
 function editarAlimento(form,pagina,modal) {
     $(form).submit(function (e) {
@@ -35,7 +109,7 @@ function editarAlimento(form,pagina,modal) {
             type: "post",
             success: function (response) {
                 if (response = 'success') {
-                    alert("Dato Almacenado");
+                    swal("Edición Exitosa", "", "success");
                     CierraPopup(modal);
                     $("#contenido").load(pagina);
                 }
@@ -44,7 +118,30 @@ function editarAlimento(form,pagina,modal) {
     })
 }
 
-function eliminarAlimento(form) {
+
+function editarTiempo(form,pagina,modal) {
+    $(form).submit(function (e) {
+        e.preventDefault();
+        let parametros = $(this).serialize()
+        console.log(parametros);
+        $.ajax({
+            data: parametros,
+            url: 'php/Utiempo.php',
+            type: "post",
+            success: function (response) {
+                if (response = 'success') {
+                    swal("Edición Exitosa", "", "success");
+                    CierraPopup(modal);
+                    $("#contenido").load(pagina);
+                }
+            }
+        })
+    })
+}
+
+
+
+function eliminarAlimento(form,pagina,modal) {
     $(form).submit(function (e) {
         e.preventDefault();
         let parametros = $(this).serialize()
@@ -52,19 +149,38 @@ function eliminarAlimento(form) {
             data: parametros,
             url: 'php/Dalimento.php',
             type: "post",
-            beforeSend: function () {
-                $('#contenido').html("<h1>Procesando Información, espere por favor....</h1>")
-            },
             success: function (response) {
                 if (response = 'success') {
-                    alert("Dato Almacenado");
-                    window.location.href = "http://localhost/proyecto/proyectoDB/odontologia/";
+                    swal("Dato Eliminado", "", "success");
+                    CierraPopup(modal);
+                    $("#contenido").load(pagina);
                 }
             }
         })
 
     })
 }
+
+function eliminarTiempo(form,pagina,modal) {
+    $(form).submit(function (e) {
+        e.preventDefault();
+        let parametros = $(this).serialize()
+        $.ajax({
+            data: parametros,
+            url: 'php/Dtiempo.php',
+            type: "post",
+            success: function (response) {
+                if (response = 'success') {
+                    swal("Dato Eliminado", "", "success");
+                    CierraPopup(modal);
+                    $("#contenido").load(pagina);
+                }
+            }
+        })
+
+    })
+}
+
 
 function CierraPopup(modal) {
     $(modal).modal('hide'); //ocultamos el modal
