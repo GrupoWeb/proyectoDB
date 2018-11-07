@@ -78,8 +78,8 @@ $url= $_SERVER["REQUEST_URI"];
                 <li class="col-sm-3">
                 <ul>
                     <li class="dropdown-header">DIETA</li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Nueva Dieta</a></li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de Dientas</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/addDieta.php')">Nueva Dieta</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/rtDieta.php')">Reporte de Dientas</a></li>
                 </ul>
                 </li>
             </ul>

@@ -6,7 +6,7 @@
     $llamar = $conn->Conectar();
     $food = $_POST['food'];
     try{
-        $x = $llamar->prepare("BEGIN pk_nutricion.add_alimento(:food); END;");
+        $x = $llamar->prepare("BEGIN PAQUETE_NUTRICION.add_alimento(:food); END;");
          $x->bindParam(1, $food, PDO::PARAM_STR);
          $x->execute();
         // echo "true";

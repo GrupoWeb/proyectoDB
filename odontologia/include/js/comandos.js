@@ -128,6 +128,37 @@ function addCita(form){
 }
 
 
+function addDieta(form) {
+    $(form).submit(function (e) {
+        e.preventDefault();
+        let parametros = $(this).serialize()
+        $.ajax({
+            data: parametros,
+            url: 'php/addDieta.php',
+            type: "post",
+            success: function (response) {
+                if (response = 'success') {
+                    swal({
+                            title: "DIETA GUARDADA",
+                            text: "Dato Almacenado!",
+                            icon: "success",
+                            button: true,
+                            dangerMode: true,
+                        })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                window.location.href = "http://localhost/proyecto/proyectoDB/odontologia/";
+
+                            }
+                        });
+
+                }
+            }
+        })
+
+    })
+}
+
 
 
 function editarAlimento(form,pagina,modal) {
@@ -304,6 +335,17 @@ function Cpersona(url, lugar) {
         }
     });
 }
+
+function COMBO(url, lugar) {
+    $.ajax({
+        url: url,
+        type: 'post',
+        success: function (r) {
+            $(lugar).html(r);
+        }
+    });
+}
+
 
 
 function llenarCombos(url,lugar) {

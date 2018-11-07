@@ -119,7 +119,7 @@ CREATE TABLE cita (
 );
 
 ALTER TABLE cita ADD CONSTRAINT cita_pk PRIMARY KEY ( id_cita );
-ALTER TABLE cita ADD activo integer;
+
 
 
 CREATE TABLE cita_persona (
@@ -1349,6 +1349,25 @@ ALTER TABLE tipo_documentos_pago
         NOCACHE
         NOCYCLE;
 
+--SECUENCIA DETALLE_DIETA
+
+  CREATE SEQUENCE SDdieta
+        INCREMENT BY 1
+        START WITH 1
+        MAXVALUE 9999
+        NOCACHE
+        NOCYCLE;
+
+
+--SECUENCIA DIETA
+  CREATE SEQUENCE Sdieta
+        INCREMENT BY 1
+        START WITH 1
+        MAXVALUE 9999
+        NOCACHE
+        NOCYCLE;
+
+
 
 --CREACION DE PAQUETES POR MODULOS
 
@@ -1429,15 +1448,16 @@ END paquete_rol;
 
 
 
-CREATE OR REPLACE PACKAGE PK_Nutricion AS
+CREATE OR REPLACE PACKAGE paquete_nutricion AS
     PROCEDURE add_alimento(Dalimento varchar2);
     PROCEDURE add_tiempo_comida(tiempo varchar2);
     PROCEDURE add_medico(Despecialidad varchar2,DidPersona number);
     PROCEDURE add_cita(DtipoSeguro varchar2,Dseguro varchar2,DsedeDireccion number,DsedeNombre varchar2,Dclinica varchar2,idPersona number,Dcita varchar2,Dusuario varchar2,DfechaCita date,DhoraCita date);
-END PK_Nutricion;
+    PROCEDURE add_dieta(IdCita number,IdMedico number,idDiagnostico number,IdAlimento number,Dcantidad varchar2,idTiempo number,Ddescripcion varchar2);
+END paquete_nutricion;
 
 
-CREATE OR REPLACE PACKAGE BODY PK_Nutricion AS
+CREATE OR REPLACE PACKAGE BODY paquete_nutricion AS
 
     PROCEDURE add_alimento(Dalimento varchar2) IS
         BEGIN
@@ -1491,10 +1511,24 @@ CREATE OR REPLACE PACKAGE BODY PK_Nutricion AS
                     INSERT INTO clinicas(id_clinica,id_sede,descripcion) VALUES(idMclinica,idSede,Dclinica);
 
                 idCita := Scita.NEXTVAL;
-                    INSERT INTO cita(id_cita,id_seguro,id_persona_paciente,cita,fecha_registro,usuario_registro,fecha_cita,hora_cita,id_clinica)
-                        VALUES(idCita,iddSeguro,idPersona,Dcita,SYSDATE,Dusuario,DfechaCita,DhoraCita,idMclinica);
+                    INSERT INTO cita(id_cita,id_seguro,id_persona_paciente,cita,fecha_registro,usuario_registro,fecha_cita,hora_cita,id_clinica,activo)
+                        VALUES(idCita,iddSeguro,idPersona,Dcita,SYSDATE,Dusuario,DfechaCita,DhoraCita,idMclinica,1);
         END add_cita;
-END PK_Nutricion;
+        PROCEDURE add_dieta(IdCita number,IdMedico number,idDiagnostico number,IdAlimento number,Dcantidad varchar2,idTiempo number,Ddescripcion varchar2)IS
+                ID number:=0;
+                IDDETALLE number :=0;
+            BEGIN
+                    ID:= Sdieta.NEXTVAL;
+                    IDDETALLE := SDdieta.NEXTVAL;
+
+                    INSERT INTO DIETA(ID_DIETA,ID_CITA,ID_MEDICO,ID_DIAGNOSTICO)
+                                VALUES(ID,IdCita,IdMedico,idDiagnostico);  
+
+                         
+                    INSERT INTO DETALLE_DIETA(ID_DETALLE_DIETA,ID_DIETA,ID_ALIMENTO,CANTIDAD,ID_TIEMPO_COMIDA,DESCRIPCION)
+                                VALUES(IDDETALLE,ID,IdAlimento,Dcantidad,idTiempo,Ddescripcion);
+            END add_dieta;
+END paquete_nutricion;
 
 CREATE OR REPLACE PACKAGE COMANDOS AS
     PROCEDURE ListarAlimento;
@@ -1689,3 +1723,43 @@ VALUES(3,3,SYSDATE,'JJLONG',160,100,80,90,160,36);
 
 
 select * from signos_vitales;
+
+
+INSERT INTO HISTORIAL_CLINICO(ID_HISTORIAL_CLINICO,ID_PERSONA,ID_SIGNOS_VITALES,VIA_INGRESO,USUARIO_REGISTRO,CLINICA,OBSERVACIONES,FECHA_INGRESO,ALTURA,PESO_ACTUAL,PESO_ANTERIOR,MEDIDA_CINTURA,MASA_MUSCULAR,FECHA_REGISTRO)
+VALUES(1,1,1,'CITA','JJOLONG','CLINICA LOURDES','',SYSDATE,160,100,90,48,125,SYSDATE);
+INSERT INTO HISTORIAL_CLINICO(ID_HISTORIAL_CLINICO,ID_PERSONA,ID_SIGNOS_VITALES,VIA_INGRESO,USUARIO_REGISTRO,CLINICA,OBSERVACIONES,FECHA_INGRESO,ALTURA,PESO_ACTUAL,PESO_ANTERIOR,MEDIDA_CINTURA,MASA_MUSCULAR,FECHA_REGISTRO)
+VALUES(2,1,1,'CITA GENERAL','JJOLONG','CLINICA PEREZ','',SYSDATE,170,120,120,48,185,SYSDATE);
+
+INSERT INTO DIAGNOSTICO(ID_DIAGNOSTICO,ID_PERSONA,ID_HISTORIAL_CLINICO,DIAGNOSTICO,FECHA_REGISTRO,ID_ENFERMEDAD)
+VALUES(1,1,1,'LA PESONA PRESENTA PROBLEMAS EN EL CORAZON',SYSDATE,1);
+INSERT INTO DIAGNOSTICO(ID_DIAGNOSTICO,ID_PERSONA,ID_HISTORIAL_CLINICO,DIAGNOSTICO,FECHA_REGISTRO,ID_ENFERMEDAD)
+VALUES(2,1,1,'EL PACIENTE PRESENTA PROBLEMAS EN RESPIRACION, SE LE DA MEDICAMENTO',SYSDATE,1);
+
+INSERT INTO DIETA(ID_DIETA,ID_CITA,ID_MEDICO,ID_DIAGNOSTICO)
+VALUES(Sdieta.NEXTVAL,1,1,1);
+INSERT INTO DIETA(ID_DIETA,ID_CITA,ID_MEDICO,ID_DIAGNOSTICO)
+VALUES(Sdieta.NEXTVAL,1,1,2);
+
+
+
+CREATE SEQUENCE SDdieta
+        INCREMENT BY 1
+        START WITH 1
+        MAXVALUE 9999
+        NOCACHE
+        NOCYCLE;
+
+
+--SECUENCIA DIETA
+  CREATE SEQUENCE Sdieta
+        INCREMENT BY 1
+        START WITH 1
+        MAXVALUE 9999
+        NOCACHE
+        NOCYCLE;
+
+INSERT INTO DETALLE_DIETA(ID_DETALLE_DIETA,ID_DIETA,ID_ALIMENTO,CANTIDAD,ID_TIEMPO_COMIDA,DESCRIPCION)
+VALUES(SDdieta.NEXTVAL,1,11,'2 veces al dia',2,'comer cada 8 horas');
+
+DELETE FROM DETALLE_DIETA;
+DELETE FROM DIETA;

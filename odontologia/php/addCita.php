@@ -15,11 +15,12 @@
     $Nusuario = $_POST['Nusuario'];
     $Fcita = $_POST['Fcita'];
     $Hhora = $_POST['Hhora'];
+    $activo = 1;
 
 
 
     try{
-        $x = $llamar->prepare("BEGIN pk_nutricion.add_cita(?,?,?,?,?,?,?,?,to_date(?,'DD/MM/YYYY'),to_date(?,'HH:MI')); END;");
+        $x = $llamar->prepare("BEGIN PAQUETE_NUTRICION.add_cita(?,?,?,?,?,?,?,?,to_date(?,'DD/MM/YYYY'),to_date(?,'HH:MI')); END;");
          $x->bindParam(1, $ctSeguro, PDO::PARAM_STR);
          $x->bindParam(2, $cSeguro, PDO::PARAM_STR);
          $x->bindParam(3, $iSede, PDO::PARAM_INT);

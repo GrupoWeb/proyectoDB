@@ -7,7 +7,7 @@
     $especialidad = $_POST['espe'];
     $medico = $_POST['persona'];
     try{
-        $x = $llamar->prepare("BEGIN PK_NUTRICION.ADD_MEDICO(?,?); END;");
+        $x = $llamar->prepare("BEGIN PAQUETE_NUTRICION.ADD_MEDICO(?,?); END;");
          $x->bindParam(1, $especialidad, PDO::PARAM_STR);
          $x->bindParam(2, $medico, PDO::PARAM_INT);
          $x->execute();

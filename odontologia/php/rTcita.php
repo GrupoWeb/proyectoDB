@@ -9,7 +9,7 @@
                 FROM CITA 
                     INNER JOIN SEGURO S ON S.ID_SEGURO = CITA.ID_SEGURO 
                     INNER JOIN PERSONA P ON P.ID_PERSONA = CITA.ID_PERSONA_PACIENTE
-                    INNER JOIN CLINICAS CLI ON CLI.ID_CLINICA = CITA.ID_CLINICA ");
+                    INNER JOIN CLINICAS CLI ON CLI.ID_CLINICA = CITA.ID_CLINICA WHERE CITA.activo = 1 ");
               
                
         $st->execute(); 
