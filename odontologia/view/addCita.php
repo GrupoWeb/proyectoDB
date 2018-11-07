@@ -27,7 +27,30 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="iSede">SEDE ID:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="iSede" name="iSede" >
+                    <select class="form-control" name="iSede" id="iSede">
+                        <option value="0">Seleccione...</option>
+                        <option value="1">Zona 1</option>
+                        <option value="2">Zona 2</option>
+                        <option value="3">Zona 3</option>
+                        <option value="4">Zona 4</option>
+                        <option value="5">Zona 5</option>
+                        <option value="6">Zona 6</option>
+                        <option value="7">Zona 7</option>
+                        <option value="8">Zona 8</option>
+                        <option value="9">Zona 9</option>
+                        <option value="10">Zona 10</option>
+                        <option value="11">Zona 11</option>
+                        <option value="12">Zona 12</option>
+                        <option value="13">Zona 13</option>
+                        <option value="14">Zona 14</option>
+                        <option value="15">Zona 15</option>
+                        <option value="16">Zona 16</option>
+                        <option value="17">Zona 17</option>
+                        <option value="18">Zona 18</option>
+                        <option value="21">Zona 21</option>
+                        <option value="24">Zona 24</option>
+                        <option value="25">Zona 25</option>
+                    </select>
                 </div>
 
                 <label class="control-label col-sm-2" for="DiSede">NOMBRE SEDE:</label>
@@ -62,7 +85,7 @@
                 <div class="col-sm-4">
                     <input type="text" data-field="date" class="form-control" id="Fcita" name="Fcita" >
                 </div>
-<div id="dtBox"></div>
+                    <div id="dtBox"></div>
                 <label class="control-label col-sm-2" for="Hhora">HORA CITA:</label>
                 <div class="col-sm-4">
                     <input type="text" data-field="time" class="form-control" id="Hhora" name="Hhora" >

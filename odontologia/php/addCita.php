@@ -19,7 +19,7 @@
 
 
     try{
-        $x = $llamar->prepare("BEGIN pk_nutricion.add_cita(:ctSeguro,:cSeguro,:iSede,:Disede,:Nclinica,:persona,:Ncita,:Nusuario,:Fcita,:Hhora); END;");
+        $x = $llamar->prepare("BEGIN pk_nutricion.add_cita(?,?,?,?,?,?,?,?,to_date(?,'DD/MM/YYYY'),to_date(?,'HH:MI')); END;");
          $x->bindParam(1, $ctSeguro, PDO::PARAM_STR);
          $x->bindParam(2, $cSeguro, PDO::PARAM_STR);
          $x->bindParam(3, $iSede, PDO::PARAM_INT);

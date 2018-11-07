@@ -72,7 +72,7 @@ $url= $_SERVER["REQUEST_URI"];
                 <ul>
                     <li class="dropdown-header">CITA</li>
                     <li class="seleccion"><a onClick="CargarPagina('#contenido','view/addCita.php')">Asignar Cita</a></li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de Citas</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/rtCita.php')">Reporte de Citas</a></li>
                 </ul>
                 </li>
                 <li class="col-sm-3">

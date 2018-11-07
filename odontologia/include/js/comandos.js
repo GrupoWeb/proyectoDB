@@ -151,6 +151,28 @@ function editarAlimento(form,pagina,modal) {
 }
 
 
+function editarCita(form,pagina,modal) {
+    $(form).submit(function (e) {
+        e.preventDefault();
+        let parametros = $(this).serialize()
+        console.log(parametros);
+        $.ajax({
+            data: parametros,
+            url: 'php/Ucita.php',
+            type: "post",
+            success: function (response) {
+                if (response = 'success') {
+                    swal("Edición Exitosa", "", "success");
+                    CierraPopup(modal);
+                    $("#contenido").load(pagina);
+                }
+            }
+        })
+    })
+}
+
+
+
 function editarTiempo(form,pagina,modal) {
     $(form).submit(function (e) {
         e.preventDefault();
@@ -219,6 +241,26 @@ function eliminarTiempo(form,pagina,modal) {
         $.ajax({
             data: parametros,
             url: 'php/Dtiempo.php',
+            type: "post",
+            success: function (response) {
+                if (response = 'success') {
+                    swal("Dato Eliminado", "", "success");
+                    CierraPopup(modal);
+                    $("#contenido").load(pagina);
+                }
+            }
+        })
+
+    })
+}
+
+function eliminarCita(form,pagina,modal) {
+    $(form).submit(function (e) {
+        e.preventDefault();
+        let parametros = $(this).serialize()
+        $.ajax({
+            data: parametros,
+            url: 'php/Dcita.php',
             type: "post",
             success: function (response) {
                 if (response = 'success') {
