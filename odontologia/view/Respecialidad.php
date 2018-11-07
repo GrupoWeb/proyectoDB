@@ -73,8 +73,8 @@ $url= $_SERVER["REQUEST_URI"];
 </form>
 <script>
 $(document).ready(function(){
-    editarAlimento('#Ealimento','view/Ralimento.php','#modalEditar');
-    eliminarAlimento('#Dalimento','view/Ralimento.php','#modalEliminar');
+    editarEspecialidad('#Uespecialidad','view/Respecialidad.php','#modalEditar');
+    eliminarEspecialidad('#Despecialidad','view/Respecialidad.php','#modalEliminar');
 })
 
 </script>

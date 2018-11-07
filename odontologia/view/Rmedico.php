@@ -16,7 +16,6 @@ $url= $_SERVER["REQUEST_URI"];
                 <th>Medico</th>
                 <th>Especialidad</th>
                 <th>Registro</th>
-                <th>Controles</th>
             </thead>
         </table>
     </div>

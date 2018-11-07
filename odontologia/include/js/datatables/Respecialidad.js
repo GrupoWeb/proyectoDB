@@ -18,7 +18,7 @@ $(document).ready(function() {
             { "defaultContent": "<button type='button' class='editar btn btn-primary' data-toggle='modal' data-target='#modalEditar'><i class='fas fa-pencil-alt'></i></button><button type='button' class='eliminar btn btn-danger' data-toggle='modal' data-target='#modalEliminar'><i class='fas fa-trash-alt'></i></button>"}
         ],
         "columnDefs": [
-            { "width": "6%",  "targets": 0 },
+            { "width": "6%",  "targets": 0 }, 
             { "width": "60%", "targets": 1 },
             { "width": "10%", "targets":2}
           ],

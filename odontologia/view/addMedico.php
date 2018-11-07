@@ -11,7 +11,9 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="persona">Empleado:</label>
                 <div class="col-sm-10">
-                 <input type="text" class="form-control" id="persona" name="persona" placeholder="Ingrese Empleado">
+                <select  name="persona"  id="persona" class="form-control">
+                </select>
+                
                 </div>
             </div>
             <div class="form-group">
@@ -24,5 +26,6 @@
 </body>
 <script>
     addMedico('#AddMedicos');
+    Cpersona('php/Cpersona.php',"#persona");
 </script>
 

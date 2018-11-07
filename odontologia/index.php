@@ -25,6 +25,8 @@ $url= $_SERVER["REQUEST_URI"];
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="include/Date/src/DateTimePicker.css" />
+    <script type="text/javascript" src="include/Date/src/DateTimePicker.js"></script>
     <title>Modulo Odontología</title>
 </head>
 <body>
@@ -68,25 +70,8 @@ $url= $_SERVER["REQUEST_URI"];
                 </li>
                 <li class="col-sm-3">
                 <ul>
-                    
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Sede</a></li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Asignar Clínica</a></li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de Clínicas</a></li>
-                </ul>
-                </li>
-                <li class="col-sm-3">
-                <ul>
-                    <li class="dropdown-header">SEGURO</li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Nuevo Tipo de Seguro</a></li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Asignar SEguro</a></li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de Seguro</a></li>
-                    <li class="divider"></li>
-                </ul>
-                </li>
-                <li class="col-sm-3">
-                <ul>
                     <li class="dropdown-header">CITA</li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Asignar Cita</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/addCita.php')">Asignar Cita</a></li>
                     <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de Citas</a></li>
                 </ul>
                 </li>
