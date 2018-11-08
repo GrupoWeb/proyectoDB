@@ -159,6 +159,68 @@ function addDieta(form) {
     })
 }
 
+function addTipoOdontologia(form) {
+    $(form).submit(function (e) {
+        e.preventDefault();
+        let parametros = $(this).serialize()
+        $.ajax({
+            data: parametros,
+            url: 'php/addOtipo.php',
+            type: "post",
+            success: function (response) {
+                if (response = 'success') {
+                    swal({
+                            title: "AGREGADO EXITOSAMENTE",
+                            text: "Dato Almacenado!",
+                            icon: "success",
+                            button: true,
+                            dangerMode: true,
+                        })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                window.location.href = "http://localhost/proyecto/proyectoDB/odontologia/";
+
+                            }
+                        });
+
+                }
+            }
+        })
+
+    })
+}
+
+function addOdontologia(form) {
+    $(form).submit(function (e) {
+        e.preventDefault();
+        let parametros = $(this).serialize()
+        $.ajax({
+            data: parametros,
+            url: 'php/addOdontologia.php',
+            type: "post",
+            success: function (response) {
+                if (response = 'success') {
+                    swal({
+                            title: "AGREGADO EXITOSAMENTE",
+                            text: "Dato Almacenado!",
+                            icon: "success",
+                            button: true,
+                            dangerMode: true,
+                        })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                window.location.href = "http://localhost/proyecto/proyectoDB/odontologia/";
+
+                            }
+                        });
+
+                }
+            }
+        })
+
+    })
+}
+
 
 
 function editarAlimento(form,pagina,modal) {

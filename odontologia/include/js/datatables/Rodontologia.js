@@ -1,28 +1,31 @@
 $(document).ready(function() {
-     $('#Rdieta').DataTable({
+     $('#Rodontologia').DataTable( {
         "bDeferRender": true,
         "searching": true,
         "blengthChange":true,
         "sPaginationType":"full_numbers",
         "dom": '<"toolbar">frtip',
         "fnInitComplete": function(){
-            $('div.toolbar').html('<h1>Reporte de Dietass</h1>');
+            $('div.toolbar').html('<h1>Reporte Citas Odontologia</h1>');
           },
         "ajax": {
-            "url": "php/rTdieta.php",
+            "url": "php/rTodontologia.php",
             "type": "POST" 
         },
         "columns": [
-            { "data": "ID_DIETA" },
-            { "data": "CITA" },
+            { "data": "CODIGO" },
             { "data": "NOMBRE" },
-            { "data": "DIAGNOSTICO" }
+            { "data": "NOMBREMEDICO" },
+            { "data": "DESCRIPCION" },
+            { "data": "OBSERVACION" },
+            { "data": "DIAGNOSTICO" },
+            { "data": "FECHAREGISTRO" }
+            
         ],
-        
         "columnDefs": [
             { "width": "6%",  "targets": 0 },
-            { "width": "30%", "targets": 1 },
-            { "width": "20%", "targets":2}
+            { "width": "60%", "targets": 1 },
+            { "width": "10%", "targets":2}
           ],
         "dom": 'Bfrtip',
         "buttons": [
@@ -41,3 +44,4 @@ $(document).ready(function() {
 
    
 } );
+

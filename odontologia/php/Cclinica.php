@@ -4,15 +4,18 @@
     $llamar = $conn->Conectar();
     try{
         $data = array();
-        $st=$llamar->prepare("SELECT ID_PERSONA,(PRIMER_NOMBRE || ' ' || SEGUNDO_NOMBRE || ' ' || PRIMER_APELLIDO || ' ' || SEGUNDO_APELLIDO) AS NOMBRE FROM PERSONA");
-        $st->setFetchMode(PDO::FETCH_ASSOC);
+        $st=$llamar->prepare("SELECT 
+                                C.ID_CLINICA,
+                                C.DESCRIPCION
+                            FROM CLINICAS C");
         $st->execute(); 
+        $resultado=$st->fetchAll(PDO::FETCH_ASSOC);
         $i=0;
         $combo = '<option value="0">Seleccione...</option>';
-        while ($row = $st->fetch()){
-            $combo .= '<option value="'.$row['ID_PERSONA'].'">'.$row['NOMBRE'].'</option>';
+        foreach($resultado as $row) {
+            $combo .= '<option value="'.$row['ID_CLINICA'].'">'.$row['DESCRIPCION'].'</option>';
         }
-        echo $combo;
+         echo $combo;
        $st->closeCursor();
     }catch(PDOException $e){
         if ($e->getCode() == 1062) {

@@ -27,6 +27,7 @@ $url= $_SERVER["REQUEST_URI"];
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" type="text/css" href="include/Date/src/DateTimePicker.css" />
     <script type="text/javascript" src="include/Date/src/DateTimePicker.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <title>Modulo Odontología</title>
 </head>
 <body>
@@ -42,7 +43,7 @@ $url= $_SERVER["REQUEST_URI"];
         </div>
         <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-            <li><a href="#">Inicio</a></li>
+            <li ><a onClick="CargarPagina('#contenido','view/graficos.php')">Gerencial</a></li>
             <li class="dropdown menu-large">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Nutrición <b class="caret"></b> </a>
             <ul class="dropdown-menu megamenu row">
@@ -90,15 +91,15 @@ $url= $_SERVER["REQUEST_URI"];
             <li class="col-sm-3">
                 <ul>
                     <li class="dropdown-header">TIPO PACIENTE</li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Nuevo Tipo</a></li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Asignación Tipo Paciente</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/addTipoOdontologia.php')">Nuevo Tipo</a></li>
+                    
                 </ul>
                 </li>
                 <li class="col-sm-3">
                 <ul>
                     <li class="dropdown-header">PACIENTE ODONTOLOGIA</li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Nuevo paciente</a></li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/prueba.php')">Reporte de pacientes</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/addPacienteOdontologia.php')">Nuevo paciente</a></li>
+                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/rtPacienteOdontologia.php')">Reporte de pacientes</a></li>
                 </ul>
                 </li>
             </ul>

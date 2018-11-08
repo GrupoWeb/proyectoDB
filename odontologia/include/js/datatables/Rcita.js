@@ -6,7 +6,7 @@ $(document).ready(function() {
         "sPaginationType":"full_numbers",
         "dom": '<"toolbar">frtip',
         "fnInitComplete": function(){
-            $('div.toolbar').html('<h1>Reporte de Alimentos</h1>');
+            $('div.toolbar').html('<h1>Reporte de Citas</h1>');
           },
         "ajax": {
             "url": "php/rTcita.php",
