@@ -1,10 +1,7 @@
 $(document).ready(function(){
-
-
     load_monthwise_data('Reporte de alimentos');
-
 });
-
+ 
 
 google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback();
@@ -25,9 +22,10 @@ function load_monthwise_data(title)
 
 function drawMonthwiseChart(chart_data, chart_main_title)
 {
-    console.log("dentro");
+    
     var jsonData = chart_data;
     var data = new google.visualization.DataTable();
+    
     data.addColumn('string', 'Month');
     data.addColumn('number', 'Profit');
     $.each(jsonData, function(i, jsonData){
@@ -48,3 +46,5 @@ function drawMonthwiseChart(chart_data, chart_main_title)
     var chart = new google.visualization.ColumnChart(document.getElementById('chart_area'));
     chart.draw(data, options);
 }
+
+

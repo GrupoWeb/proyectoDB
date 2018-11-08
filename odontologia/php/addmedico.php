@@ -16,6 +16,7 @@
         }else{
             echo "malo";
         };
+        $x->closeCursor();
     }catch(PDOException $e){
         if ($e->getCode() == 1062) {
             echo "No se puede insertar";

@@ -4,8 +4,7 @@
     $llamar = $conn->Conectar();
 
     try{
-        $st = $llamar->prepare("SELECT * 
-                                    from diagnostico");
+        $st = $llamar->prepare("SELECT * from DIAGNOSTICO");
         
         $st->setFetchMode(PDO::FETCH_ASSOC);
         $st->execute();

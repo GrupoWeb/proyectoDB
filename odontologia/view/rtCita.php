@@ -1,7 +1,7 @@
 <?php
 $host= $_SERVER["HTTP_HOST"];
 $url= $_SERVER["REQUEST_URI"];
-//echo "http://" . $host . $url;
+//echo "http://" . $host . $url; 
 ?>
 <script src="include/js/datatables/Rcita.js"></script>
 <script src="include/js/comandos.js"></script>

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var tabla = $('#Rcita').DataTable( {
+    var tabla = $('#Rcita').DataTable( { 
         "bDeferRender": true,
         "searching": true,
         "blengthChange":true,

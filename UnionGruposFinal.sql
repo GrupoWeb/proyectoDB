@@ -1634,10 +1634,32 @@ BEGIN
 
 --persona
 
-    paquete_rol.add_persona(1,1,1,1,'JUAN','JOSE','JOLON','GRANADOS','0','22/12/1985','M');
+    paquete_rol.add_persona(1,1,7,2,'JUAN','JOSE','JOLON','GRANADOS','0','20/10/1985','M');
+    paquete_rol.add_persona(2,1,8,2,'CARLA','MARIBEL','FLORES','FLORES','0','21/09/1985','F');
+    paquete_rol.add_persona(3,1,9,1,'MIRIAN','JOSE','GARCIA','GARCIA','0','22/12/1990','F');
+    paquete_rol.add_persona(1,1,10,2,'MAYRA','LUCRECIA','CHAN','PEREZ','0','22/12/1975','F');
+    paquete_rol.add_persona(2,1,11,3,'KARINA','IVONNE','FLORES','HERNANDEZ','0','22/01/1980','F');
+    paquete_rol.add_persona(3,1,8,3,'MARIO','JORGE','VASQUES','VELASQUEZ','0','22/02/1990','M');
+    paquete_rol.add_persona(1,1,7,2,'PEDRO','CHAN','VELASQUEZ','FLORES','0','01/11/1999','M');
+    paquete_rol.add_persona(1,1,7,1,'CAROLINA','MARIA','CHACON','CHACON','0','12/12/1985','F');
+    paquete_rol.add_persona(1,1,9,1,'KALKI','MARIO','RAMIREZ','RAMIREZ','0','05/12/1985','M');
+    paquete_rol.add_persona(1,1,10,1,'JUAN','JOSE','DEL AGUILA','VASQUEZ','0','08/08/1988','M');
+    paquete_rol.add_persona(2,1,8,2,'ISRAEL','ABIGAIL','LUTIN','LUTIN','0','22/12/1989','M');
+    paquete_rol.add_persona(2,1,8,2,'TANIA','TATIANA','MAYORGA','SAMAYOA','0','11/12/1985','F');
+    paquete_rol.add_persona(3,1,9,2,'PAOLA','MARIA','CHOCOC','US','0','22/11/1970','F');
+    paquete_rol.add_persona(2,1,10,3,'MARIA','JOSE','CHAC','CHOC','0','05/12/2001','F');
+    paquete_rol.add_persona(2,1,11,3,'MARITZA','MARIBEL','SAGASTUME','COJOLON','0','08/08/1985','F');
+    paquete_rol.add_persona(3,1,11,2,'LORENA','BEATRIZ','COJOLON','GARCIA','0','11/09/1988','F');
+    paquete_rol.add_persona(2,1,11,2,'CARLOS','ALBERTO','VASQUEZ','VELASQUEZ','0','22/06/1987','M');
+    paquete_rol.add_persona(2,1,11,2,'JORGE','MARIO','PELAES','PELAES','0','21/04/1983','M');
+    paquete_rol.add_persona(3,1,10,2,'KENET','ALBERTO','MARROQUIN','MARROQUIN','0','19/06/1991','M');
+    paquete_rol.add_persona(3,1,10,2,'ALEJANDRO','JOSE','PEREZ','PEREZ','0','15/12/1993','M');
+    
 
 -- rol persona
     paquete_rol.add_rol_persona('Administrador','1','JJOLONG');
+    paquete_rol.add_rol_persona('CAJERO','1','JJOLONG');
+    paquete_rol.add_rol_persona('CONTADOR','1','JJOLONG');
 
 
 -- funcion maximo alimento

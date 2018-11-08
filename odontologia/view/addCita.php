@@ -11,7 +11,7 @@
                         <option value="SEMESTRAL">SEMESTRAL</option>
                         <option value="ANUAL">ANUAL</option>
                         <option value="2AÑOS">2 AÑOS</option>
-                    </select>
+                    </select> 
                 </div>
             
                 <label class="control-label col-sm-2" for="idDire">SEGUROS:</label>

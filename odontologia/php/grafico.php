@@ -16,6 +16,7 @@
                 'profit'  => floatval($row["CANTIDAD"])
                 );
                 }
+                $statement->closeCursor();
                 echo json_encode($output);
 
 

@@ -1,26 +1,25 @@
 <?php 
 
-    require_once('../conexion/conexion.php');
+    require_once('../conexion/conexion.php'); 
 
     $conn = new Conexion();
     $llamar = $conn->Conectar();
 
-    $ctSeguro = $_POST['ctSeguro'];
-    $cSeguro = $_POST['cSeguro'];
-    $iSede = $_POST['iSede'];
-    $Disede = $_POST['DiSede'];
-    $Nclinica = $_POST['Nclinica'];
-    $persona = $_POST['persona'];
-    $Ncita = $_POST['Ncita'];
-    $Nusuario = $_POST['Nusuario'];
-    $Fcita = $_POST['Fcita'];
-    $Hhora = $_POST['Hhora'];
-    $activo = 1;
+    $ctSeguro = 'SEMESTRAL';
+    $cSeguro = 'SILVER';
+    $iSede = 1;
+    $Disede = 'PAMPLONA';
+    $Nclinica = 'LOURDES';
+    $persona = 11;
+    $Ncita = 'ODONTOLOGIA';
+    $Nusuario = 'JJOLONG';
+    $Fcita = '15-11-2018';
+    $Hhora = '10:00';
 
 
 
     try{
-        $x = $llamar->prepare("BEGIN PAQUETE_NUTRICION.add_cita(?,?,?,?,?,?,?,?,to_date(?,'DD/MM/YYYY'),to_date(?,'HH:MI')); END;");
+        $x = $llamar->prepare("BEGIN PAQUETE_NUTRICION.add_cita(?,?,?,?,?,?,?,?,to_date(?,'DD/MM/YYYY'),to_char(?,'HH24:MI')); END;");
          $x->bindParam(1, $ctSeguro, PDO::PARAM_STR);
          $x->bindParam(2, $cSeguro, PDO::PARAM_STR);
          $x->bindParam(3, $iSede, PDO::PARAM_INT);
@@ -37,6 +36,7 @@
         }else{
             echo "malo";
         };
+        $x->closeCursor();
     }catch(PDOException $e){
         if ($e->getCode() == 1062) {
             echo "No se puede insertar";
