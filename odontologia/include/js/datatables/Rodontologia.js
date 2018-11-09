@@ -9,17 +9,17 @@ $(document).ready(function() {
             $('div.toolbar').html('<h1>Reporte Citas Odontologia</h1>');
           },
         "ajax": {
-            "url": "php/rTodontologia.php",
+            "url": "php/rTodontologia.php", 
             "type": "POST" 
         },
         "columns": [
             { "data": "CODIGO" },
             { "data": "NOMBRE" },
-            { "data": "NOMBREMEDICO" },
             { "data": "DESCRIPCION" },
             { "data": "OBSERVACION" },
+            { "data": "FECHAREGISTRO" },
             { "data": "DIAGNOSTICO" },
-            { "data": "FECHAREGISTRO" }
+            { "data": "NOMBREMEDICO" }
             
         ],
         "columnDefs": [

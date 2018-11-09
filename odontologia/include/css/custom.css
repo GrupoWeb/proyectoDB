@@ -10,3 +10,8 @@
 .toolbar {
     float: left;
 }
+
+.cards{
+    width: 50% !important;
+    float:left;
+}

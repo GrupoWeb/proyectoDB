@@ -14,11 +14,11 @@ $url= $_SERVER["REQUEST_URI"];
             <thead>
                 <th>CODIGO</th>
                 <th>NOMBRE PACIENTE</th>
-                <th>MEDICO</th>
                 <th>DESCRIPCIÓN</th>
                 <th>OBSERVACIONES</th>
-                <th>DIAGNOSTICO</th>
                 <th>FECHA DE REGISTRO</th>
+                <th>DIAGNOSTICO</th>
+                <th>DIAGNOSTICO</th>
             </thead>
         </table>
     </div>

@@ -1477,7 +1477,7 @@ CREATE OR REPLACE PACKAGE paquete_nutricion AS
     PROCEDURE add_alimento(Dalimento varchar2);
     PROCEDURE add_tiempo_comida(tiempo varchar2);
     PROCEDURE add_medico(Despecialidad varchar2,DidPersona number);
-    PROCEDURE add_cita(DtipoSeguro varchar2,Dseguro varchar2,DsedeDireccion number,DsedeNombre varchar2,Dclinica varchar2,idPersona number,Dcita varchar2,Dusuario varchar2,DfechaCita date,DhoraCita date);
+    PROCEDURE add_cita(DtipoSeguro varchar2,Dseguro varchar2,DsedeDireccion number,DsedeNombre varchar2,Dclinica varchar2,idPersona number,Dcita varchar2,Dusuario varchar2,DfechaCita varchar2,DhoraCita date);
     PROCEDURE add_dieta(IdCita number,IdMedico number,idDiagnostico number,IdAlimento number,Dcantidad varchar2,idTiempo number,Ddescripcion varchar2);
 END paquete_nutricion;
 
@@ -1507,8 +1507,14 @@ CREATE OR REPLACE PACKAGE BODY paquete_nutricion AS
                 INSERT INTO especialidad_medico(id_medico,id_especialidad,fecha_registro) VALUES(idEspeMedico,idEspecialidad,SYSDATE);
         END add_medico;
 
-    PROCEDURE add_cita(DtipoSeguro varchar2,Dseguro varchar2,DsedeDireccion number,
-                            DsedeNombre varchar2,Dclinica varchar2,idPersona number,Dcita varchar2,Dusuario varchar2,DfechaCita date,DhoraCita date) IS
+    PROCEDURE add_cita( DtipoSeguro varchar2,
+                        Dseguro varchar2,
+                        DsedeDireccion number,
+                        DsedeNombre varchar2,
+                        Dclinica varchar2,
+                        idPersona number,
+                        Dcita varchar2,
+                        Dusuario varchar2,DfechaCita varchar2,DhoraCita date) IS
         --variables
             idTseguro number:=0;
             iddSeguro number:=0;
@@ -1518,26 +1524,26 @@ CREATE OR REPLACE PACKAGE BODY paquete_nutricion AS
 
         BEGIN
                 idTseguro := Stseguro.NEXTVAL;
-                    INSERT INTO tipo_seguro(id_tipo_seguro,tipo_seguro) VALUES(idTseguro,DtipoSeguro);
+                    INSERT INTO tipo_seguro(id_tipo_seguro,tipo_seguro) VALUES(idTseguro,UPPER(DtipoSeguro));
 
                 iddSeguro := Sseguro.NEXTVAL;
-                IF DtipoSeguro = 'SEMESTRAL' THEN
+                IF UPPER(DtipoSeguro) = 'SEMESTRAL' THEN
                     INSERT INTO seguro(id_seguro,id_tipo_seguro,seguro,fecha_registro,vigencia_seguro) VALUES(iddSeguro,idTseguro,Dseguro,SYSDATE,add_months(to_date(SYSDATE,'dd/mm/yyyy'),6));
-                ELSIF DtipoSeguro = 'ANUAL' THEN  
+                ELSIF UPPER(DtipoSeguro) = 'ANUAL' THEN  
                     INSERT INTO seguro(id_seguro,id_tipo_seguro,seguro,fecha_registro,vigencia_seguro) VALUES(iddSeguro,idTseguro,Dseguro,SYSDATE,add_months(to_date(SYSDATE,'dd/mm/yyyy'),12));
                 ELSE
                     INSERT INTO seguro(id_seguro,id_tipo_seguro,seguro,fecha_registro,vigencia_seguro) VALUES(iddSeguro,idTseguro,Dseguro,SYSDATE,add_months(to_date(SYSDATE,'dd/mm/yyyy'),24));
                 END IF;
 
                 idSede := Ssede.NEXTVAL;
-                    INSERT INTO sede(id_sede,id_direccion,nombre) VALUES(idSede,DsedeDireccion,DsedeNombre);
+                    INSERT INTO sede(ID_SEDE,ID_DIRECCION,NOMBRE) VALUES(idSede,DsedeDireccion,DsedeNombre);
 
                 idMclinica := Sclinica.NEXTVAL;  
-                    INSERT INTO clinicas(id_clinica,id_sede,descripcion) VALUES(idMclinica,idSede,Dclinica);
+                    INSERT INTO clinicas(ID_CLINICA,ID_SEDE,DESCRIPCION) VALUES(idMclinica,idSede,Dclinica);
 
                 idCita := Scita.NEXTVAL;
                     INSERT INTO cita(id_cita,id_seguro,id_persona_paciente,cita,fecha_registro,usuario_registro,fecha_cita,hora_cita,id_clinica,activo)
-                        VALUES(idCita,iddSeguro,idPersona,Dcita,SYSDATE,Dusuario,DfechaCita,DhoraCita,idMclinica,1);
+                        VALUES(idCita,iddSeguro,idPersona,Dcita,SYSDATE,Dusuario,to_date(DfechaCita,'DD/MM/YYYY'),DhoraCita,idMclinica,1);
         END add_cita;
         PROCEDURE add_dieta(IdCita number,IdMedico number,idDiagnostico number,IdAlimento number,Dcantidad varchar2,idTiempo number,Ddescripcion varchar2)IS
                 ID number:=0;
@@ -1565,7 +1571,13 @@ CREATE OR REPLACE PACKAGE BODY paquete_odontologia AS
         begin
             INSERT INTO TIPO_ODONTOLOGIA(ID_ODONTOLOGIA,DESCRIPCION) VALUES(StOdonto.NEXTVAL,Ddescripcion);
         END add_TipoOdontologia;
-    PROCEDURE add_PacienteOdontologia(Ipersona number,Imedico number,IDclinica number,Itodontologia number, iDiagnostico number, Dobservaciones varchar2) IS
+    PROCEDURE add_PacienteOdontologia(
+                    Ipersona number,
+                    Imedico number,
+                    IDclinica number,
+                    Itodontologia number, 
+                    iDiagnostico number, 
+                    Dobservaciones varchar2) IS
        
         IDpaciente number;
         IDtipoO number;

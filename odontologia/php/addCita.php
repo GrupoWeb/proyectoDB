@@ -5,21 +5,21 @@
     $conn = new Conexion();
     $llamar = $conn->Conectar();
 
-    $ctSeguro = 'SEMESTRAL';
-    $cSeguro = 'SILVER';
-    $iSede = 1;
-    $Disede = 'PAMPLONA';
-    $Nclinica = 'LOURDES';
-    $persona = 11;
-    $Ncita = 'ODONTOLOGIA';
-    $Nusuario = 'JJOLONG';
-    $Fcita = '15-11-2018';
-    $Hhora = '10:00';
+    $ctSeguro = $_POST['ctSeguro'];
+    $cSeguro = $_POST['cSeguro'];
+    $iSede = $_POST['iSede'];
+    $Disede = $_POST['Disede'];
+    $Nclinica = $_POST['Nclinica'];
+    $persona = $_POST['persona'];
+    $Ncita = $_POST['Ncita'];
+    $Nusuario = $_POST['Nusuario'];
+    $Fcita = $_POST['Fcita'];
+    $Hhora = $_POST['Hhora'];
 
 
 
     try{
-        $x = $llamar->prepare("BEGIN PAQUETE_NUTRICION.add_cita(?,?,?,?,?,?,?,?,to_date(?,'DD/MM/YYYY'),to_char(?,'HH24:MI')); END;");
+        $x = $llamar->prepare("BEGIN PAQUETE_NUTRICION.add_cita(?,?,?,?,?,?,?,?,?,to_date(?,'HH24:MI')); END;");
          $x->bindParam(1, $ctSeguro, PDO::PARAM_STR);
          $x->bindParam(2, $cSeguro, PDO::PARAM_STR);
          $x->bindParam(3, $iSede, PDO::PARAM_INT);

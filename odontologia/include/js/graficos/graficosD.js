@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    load_monthwise_data('Reporte de alimentos');
+    load_monthwise_data('Consumo');
 });
  
 
@@ -44,7 +44,7 @@ function drawMonthwiseChart(chart_data, chart_main_title)
     };
 
     var chart = new google.visualization.ColumnChart(document.getElementById('chart_area'));
-    chart.draw(data, options);
+    chart.draw(data, options); 
 }
-
+ 
 
