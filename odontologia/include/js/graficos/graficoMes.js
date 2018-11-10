@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    load_graphic('Genero');
+    load_graphic('Reporte por Mes');
 });
 google.charts.load('current', {'packages': ['corechart']});
 google.charts.setOnLoadCallback();
@@ -8,7 +8,7 @@ google.charts.setOnLoadCallback();
 function load_graphic(title) {
     var temp_title = title;
     $.ajax({
-        url: "php/graficoFecha.php",
+        url: "php/graficoMes.php",
         method: "POST",
         dataType: "JSON",
         success: function (data) {
@@ -20,21 +20,18 @@ function load_graphic(title) {
 
 function drawChart(chart_data, chart_main_title) {
 
-    alert("hona");
 
 
     var jsonData = chart_data;
     var data = new google.visualization.DataTable();
-    data.addColumn('string', 'anno');
-    data.addColumn('number', 'cantidad');
-console.log(jsonData);
+    data.addColumn('string', 'GENERO');
+    data.addColumn('number', 'PERSONAS');
+
         $.each(jsonData, function (i, jsonData) {
-            var anno = jsonData.anno;
-            var cantidad = jsonData.cantidad;
-            console.log(anno);
-            console.log(cantidad);
+            var month = jsonData.mes;
+            var profit = parseFloat($.trim(jsonData.cantidad));
             data.addRows([
-                [anno, cantidad]
+                [month, profit]
             ]);
         });
 
@@ -43,7 +40,7 @@ console.log(jsonData);
         title: 'Genero'
       };
 
-      var chart = new google.visualization.PieChart(document.getElementById('table_div'));
+      var chart = new google.visualization.PieChart(document.getElementById('chart_genero'));
       chart.draw(data, options);
 } 
 

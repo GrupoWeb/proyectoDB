@@ -43,45 +43,81 @@ $url= $_SERVER["REQUEST_URI"];
         </div>
         <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-            <li ><a onClick="CargarPagina('#contenido','view/graficos.php')">Gerencial</a></li>
+        <li class="dropdown menu-large">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Reportes <b class="caret"></b> </a>
+            <ul class="dropdown-menu megamenu row">
+                <li class="col-sm-3">
+                    <ul>
+                        <li class="dropdown-header">Genero</li>
+                        <li class="seleccion"><a  onClick="CargarPagina('#contenido','reportes/genero.php')">Reporte por Genero</a></li>
+                        
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Especialidad Medico</li>
+                        <li class="seleccion"><a onClick="CargarPagina('#contenido','reportes/especialidad.php')">Reporte Especialidad Medico</a></li>
+                       
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+                <li class="col-sm-3">
+                    <ul>
+                        <li class="dropdown-header">Fecha</li>
+                        <li class="seleccion"><a onClick="CargarPagina('#contenido','reportes/anno.php')">Reporte por Año</a></li>
+                    </ul>
+                </li>
+                <li class="col-sm-3">
+                    <ul>
+                        <li class="dropdown-header">Reporte</li>
+                        <li class="seleccion"><a onClick="CargarPagina('#contenido','reportes/usuario.php')">Reporte por usuario</a></li>
+                    
+                    </ul>
+                </li>
+                <li class="col-sm-3">
+                    <ul>
+                        <li class="dropdown-header">Reporte</li>
+                        <li class="seleccion"><a onClick="CargarPagina('#contenido','reportes/meses.php')">Reporte por mes</a></li>
+                        
+                    </ul>
+                </li>
+            </ul>
+            </li>
             <li class="dropdown menu-large">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Nutrición <b class="caret"></b> </a>
             <ul class="dropdown-menu megamenu row">
-            <li class="col-sm-3">
-                <ul>
-                    <li class="dropdown-header">ALIMENTO</li>
-                    <li class="seleccion"><a  onClick="CargarPagina('#contenido','view/Ialimento.php')">Ingresar Alimentos</a></li>
-                    <li class="seleccion"><a  onClick="CargarPagina('#contenido','view/Ralimento.php')">Reporte de Alimentos</a></li>
-                    <li class="divider"></li>
-                    <li class="dropdown-header">TIEMPO DE COMIDA</li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/AddTiempo.php')">Ingresar Tiempos</a></li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/Rtiempo.php')">Reporte de Tiempo de Comida</a></li>
-                    <li class="divider"></li>
-                </ul>
+                <li class="col-sm-3">
+                    <ul>
+                        <li class="dropdown-header">ALIMENTO</li>
+                        <li class="seleccion"><a  onClick="CargarPagina('#contenido','view/Ialimento.php')">Ingresar Alimentos</a></li>
+                        <li class="seleccion"><a  onClick="CargarPagina('#contenido','view/Ralimento.php')">Reporte de Alimentos</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">TIEMPO DE COMIDA</li>
+                        <li class="seleccion"><a onClick="CargarPagina('#contenido','view/AddTiempo.php')">Ingresar Tiempos</a></li>
+                        <li class="seleccion"><a onClick="CargarPagina('#contenido','view/Rtiempo.php')">Reporte de Tiempo de Comida</a></li>
+                        <li class="divider"></li>
+                    </ul>
                 </li>
                 <li class="col-sm-3">
-                <ul>
-                    <li class="dropdown-header">ESPECIALIDAD MÉDICO</li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/Respecialidad.php')">Reporte de Especialidades</a></li>
-                    <li class="divider"></li>
-                    <li class="dropdown-header">MEDICO</li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/addMedico.php')">Nuevo Medico</a></li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/Rmedico.php')">Reporte de Medicos</a></li>
-                </ul>
+                    <ul>
+                        <li class="dropdown-header">ESPECIALIDAD MÉDICO</li>
+                        <li class="seleccion"><a onClick="CargarPagina('#contenido','view/Respecialidad.php')">Reporte de Especialidades</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">MEDICO</li>
+                        <li class="seleccion"><a onClick="CargarPagina('#contenido','view/addMedico.php')">Nuevo Medico</a></li>
+                        <li class="seleccion"><a onClick="CargarPagina('#contenido','view/Rmedico.php')">Reporte de Medicos</a></li>
+                    </ul>
                 </li>
                 <li class="col-sm-3">
-                <ul>
-                    <li class="dropdown-header">CITA</li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/addCita.php')">Asignar Cita</a></li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/rtCita.php')">Reporte de Citas</a></li>
-                </ul>
+                    <ul>
+                        <li class="dropdown-header">CITA</li>
+                        <li class="seleccion"><a onClick="CargarPagina('#contenido','view/addCita.php')">Asignar Cita</a></li>
+                        <li class="seleccion"><a onClick="CargarPagina('#contenido','view/rtCita.php')">Reporte de Citas</a></li>
+                    </ul>
                 </li>
                 <li class="col-sm-3">
-                <ul>
-                    <li class="dropdown-header">DIETA</li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/addDieta.php')">Nueva Dieta</a></li>
-                    <li class="seleccion"><a onClick="CargarPagina('#contenido','view/rtDieta.php')">Reporte de Dientas</a></li>
-                </ul>
+                    <ul>
+                        <li class="dropdown-header">DIETA</li>
+                        <li class="seleccion"><a onClick="CargarPagina('#contenido','view/addDieta.php')">Nueva Dieta</a></li>
+                        <li class="seleccion"><a onClick="CargarPagina('#contenido','view/rtDieta.php')">Reporte de Dientas</a></li>
+                    </ul>
                 </li>
             </ul>
             </li>
