@@ -5,7 +5,7 @@
     $llamar = $conn->Conectar();
     $idespecialidad = $_POST['idespecialidad'];
     try{
-        $x = $llamar->prepare("DELETE * FROM ESPECIALIDAD D WHERE D.ID_ESPECIALIDAD = :idespecialidad;");
+        $x = $llamar->prepare("DELETE FROM ESPECIALIDAD D WHERE D.ID_ESPECIALIDAD = :idespecialidad");
          $x->bindParam(1, $idespecialidad, PDO::PARAM_INT);
          $x->execute();
         if( $x ) {
